@@ -41,6 +41,6 @@ sudo systemctl start node_exporter
 sudo systemctl enable node_exporter.service
 sudo systemctl status node_exporter
 
-ip_address=$(curl -s http://vinahost.vn)
+
 echo "Please check firewall and open port 9100"
-echo "http://$ip_address:9100/metrics"
+echo "http://$(hostname -I):9100/metrics"
