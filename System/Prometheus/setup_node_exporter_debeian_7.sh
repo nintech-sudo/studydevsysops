@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd /opt
-wget https://github.com/nintech-sudo/studydevsysops/raw/main/System/Prometheus/node_exporter-1.2.2.linux-amd64.tar.gz --no-check-cẻtificate
+wget https://github.com/nintech-sudo/studydevsysops/raw/main/System/Prometheus/node_exporter-1.2.2.linux-amd64.tar.gz --no-check-certificate
 tar xvfz node_exporter-1.2.2.linux-amd64.tar.gz
 mv node_exporter-1.2.2.linux-amd64/node_exporter /usr/local/bin/
 groupadd -f node_exporter
