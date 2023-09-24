@@ -1,0 +1,10 @@
+site_name: NinTech
+site_url: https://studyspace.nin.id.vn/
+nav:
+  - Home: index.md
+  - About: README.md
+  - Email: ./System/Email/Cpanel/Huong_dan_cai_dat_MailScaner_va_MailScaner_Front_End_tren_Email_Hosting_WHM_Cpanel.md
+theme:
+  name: material
+plugins:
+  - search
