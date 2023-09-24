@@ -9,8 +9,8 @@ extra_css:
   - stylesheets/extra.css
 theme:
   name: material
-  locale: vi
-  language: vi
+  locale: en
+  language: en
   icon:
     repo: fontawesome/brands/github
     previous: fontawesome/solid/angle-left
