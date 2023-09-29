@@ -5,6 +5,12 @@
   
 }
 
+.md-typeset {
+    color-adjust: exact;
+    font-size: .75rem;
+    line-height: 1.6;
+}
+
 .md-typeset h1 {
   text-align: center;
   font-weight: bold;
