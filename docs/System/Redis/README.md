@@ -54,7 +54,7 @@ Redis là lựa chọn lý tưởng cho các trường hợp sử dụng phân t
 ## **3. Redis hoạt động như thế nào?**  
 Ở đây mình sẽ nói về cách hoạt động của Redis cache để mọi người có thể dễ dàng hình dung.  
 
-![img](images/How-Redis-typically-works.png)  
+<img src="images/How-Redis-typically-works.png" alt="Image" width="700" height="400" style="display: block; margin: 0 auto;">
 
 Trường hợp Redis đã lưu dữ liệu ( Hit Cache): **Người dùng gửi yêu cầu > Redis kiểm tra yêu cầu > Yes > trả dữ liệu cho người dùng**. 
 
@@ -62,7 +62,7 @@ Trường hợp Redis chưa lưu dữ liệu ( Miss Cache): **Người dùng g�
 
 ## **4. Redis Persistence là gì?**  
 
-<img src="images/redis_sentinel.png" alt="Image" width="400" height="400" >
+<img src="images/redis_sentinel.png" alt="Image" width="400" height="400" style="display: block; margin: 0 auto;">
 
 Bạn hãy thử tượng tượng điều gì xảy ra nếu toàn bộ dữ liệu quan trọng (mất nhiều thời gian compute mới có được) bị mất sạch sau 1 lần gặp sự cố mà không thể khôi phục được. Với Redis thì điều này đã được lường trước, và **Redis Persistence** chính là phương pháp giúp chúng ta khắc phục vấn đề này.  
 
