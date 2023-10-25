@@ -102,3 +102,4 @@ Redis Persistence là khả năng lưu trữ dữ liệu trên Disk để đảm
  <img src="images/redis_cluster.jpeg" alt="Image" width="400" height="300" style="display: block; margin: 0 auto;"> 
 
  ## **9. Cách cài đặt và cấu hình một Redis server trên Server Linux.**  
+  
