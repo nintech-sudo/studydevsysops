@@ -1,8 +1,8 @@
-site_name: Study Space DevSysOps
+site_name: Study Space SysOpsDev
 site_url: https://studyspace.nin.id.vn
-site_description: Nơi lưu trữ học tập về Develop, System, Operations  của Nin
+site_description: Nơi lưu trữ học tập về System, Operations, Develop  của Nin
 site_author: NinTech
-# repo_url: https://github.com/nintech-sudo/studydevsysops
+# repo_url: https://github.com/nintech-sudo/studysysopsdev
 
 
 extra_css:
