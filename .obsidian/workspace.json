@@ -4,17 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "8a25b8a92dae8284",
+        "id": "55444badc7083246",
         "type": "tabs",
         "children": [
           {
-            "id": "3e75b734f528879c",
+            "id": "69ebc7dcbd865033",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/README.md",
                 "mode": "source",
+                "backlinks": false,
                 "source": false
               }
             }
@@ -69,7 +70,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 395.5
   },
   "right": {
     "id": "9da34659a3095cc9",
@@ -80,19 +81,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "1c01049483d8e331",
+            "id": "4d5d3adc5dfba11f",
             "type": "leaf",
             "state": {
-              "type": "backlink",
+              "type": "side-panel-control-view",
+              "state": {}
+            }
+          },
+          {
+            "id": "8648dd0d3301ccdc",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
               "state": {
-                "file": "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/README.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
+                "file": "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/README.md"
               }
             }
           },
@@ -120,21 +122,18 @@
             }
           },
           {
-            "id": "8648dd0d3301ccdc",
+            "id": "83619fc7b1342cef",
             "type": "leaf",
             "state": {
-              "type": "outline",
-              "state": {
-                "file": "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/README.md"
-              }
+              "type": "calendar",
+              "state": {}
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 252.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -142,10 +141,29 @@
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "omnisearch:Omnisearch": false,
+      "obsidian-markdown-formatting-assistant-plugin:Open Markdown Formatting Assistant": false
     }
   },
-  "active": "3e75b734f528879c",
-  "lastOpenFiles": []
+  "active": "69ebc7dcbd865033",
+  "lastOpenFiles": [
+    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/Redis_snapshot.jpg",
+    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/README.md",
+    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/what_is_redis.webp",
+    "README.md",
+    "README-20231025134020017.webp",
+    "2023-10-25.md",
+    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/Redis-v2-01-1.jpg",
+    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/Redis-v2-separate-08.jpg",
+    "Untitled 1.canvas",
+    "Untitled.canvas",
+    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/How-Redis-typically-works.png",
+    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/redis_cluster.jpeg",
+    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/Redis_replication.png",
+    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/redis_sentinel.png",
+    "Recording 20231025125440.webm",
+    "Recording 20231025125420.webm",
+    "docs/index.md"
+  ]
 }

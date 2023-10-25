@@ -54,16 +54,17 @@ Redis là lựa chọn lý tưởng cho các trường hợp sử dụng phân t
 
 ## **3. Các kiểu dữ liệu mà Redis có thể hỗ trợ.**
 
-<img src="images/Redis-v2-separate-08.jpg" alt="Image" width="400" height="600" style="display: block; margin: 0 auto;"> 
+![[Redis-v2-separate-08.jpg|495]]
 
 ## **4. Redis hoạt động như thế nào?** 
 Ở đây mình sẽ nói về cách hoạt động của Redis cache để mọi người có thể dễ dàng hình dung.  
 
 Trường hợp Redis đã lưu dữ liệu ( Hit Cache): **Người dùng gửi yêu cầu > Redis kiểm tra yêu cầu > Yes > trả dữ liệu cho người dùng**. 
 
-Trường hợp Redis chưa lưu dữ liệu ( Miss Cache): **Người dùng gửi yêu cầu > Redis kiểm tra yêu cầu > No > Request đến Database Mysql > Trả dữ liệu cho người dùng > Set Cache vào Redis**.  
+Trường hợp Redis chưa lưu dữ liệu ( Miss Cache): **Người dùng gửi yêu cầu > Redis kiểm tra yêu cầu > No > Request đến Database Mysql > Trả dữ liệu cho người dùng > Set Cache vào Redis**.
 
-<img src="images/How-Redis-typically-works.png" alt="Image" width="600" height="400" style="display: block; margin: 0 auto;">  
+![[How-Redis-typically-works.png|450]]
+
 
 
 
@@ -80,26 +81,27 @@ Redis Persistence là khả năng lưu trữ dữ liệu trên Disk để đảm
    - **RDB + AOF**: Kết hợp cả 2 options trên. Nhưng khi Redis restart thì AOF sẽ được ưu tiên sử dụng để init data. 
  
  Bằng cách sử dụng Redis Persistence, bạn có thể khôi phục dữ liệu sau một sự cố và đảm bảo rằng dữ liệu không bị mất.
+ 
+![[Redis_snapshot.jpg|506]]
 
-<img src="images/redis_sentinel.png" alt="Image" width="300" height="300" style="display: block; margin: 0 auto;">  
 
  ## **6. Redis Replication là gì?**  
  
  Redis Replication là quá trình sao chép dữ liệu từ một Redis master (chủ) sang nhiều Redis slave (phụ). Khi có sự thay đổi dữ liệu trên Redis master, nó sẽ được chuyển tiếp đến tất cả các Redis slave để đảm bảo dữ liệu được đồng bộ trên toàn bộ hệ thống. Redis Replication cung cấp khả năng chịu lỗi (fault-tolerance) và tăng cường hiệu suất bằng việc cho phép đọc dữ liệu từ các Redis slave.  
 
- <img src="images/Redis_replication.png" alt="Image" width="400" height="300" style="display: block; margin: 0 auto;"> 
+![[Redis_replication.png|349]]
 
  ## **7. Redis Sentinel là gì?**  
 
  Redis Sentinel là một công cụ giám sát và quản lý hệ thống Redis. Nó giúp theo dõi sự hoạt động của các Redis master và slave, và tự động thực hiện quá trình failover (chuyển giao) khi một Redis master không hoạt động. Redis Sentinel giúp đảm bảo tính sẵn sàng và ổn định của hệ thống Redis bằng cách tự động chọn một Redis slave mới để thay thế Redis master gốc.  
 
- <img src="images/redis_sentinel.png" alt="Image" width="400" height="300" style="display: block; margin: 0 auto;">  
+ ![[redis_sentinel.png|351]]
 
  ## **8. Redis Cluster là gì?**  
  
  Redis Cluster là một cách để chia nhỏ dữ liệu và phân chia nó trên nhiều nút Redis để tạo thành một cụm (cluster). Cụm Redis Cluster được xây dựng để cung cấp khả năng mở rộng ngang (horizontal scalability) và tính sẵn sàng cao. Dữ liệu được phân phối trên các nút của cụm Redis Cluster và các nút này hoạt động độc lập nhưng vẫn hợp tác để đảm bảo tính nhất quán và hiệu suất cao. Redis Cluster cung cấp khả năng chịu lỗi và mở rộng tự động khi thêm hoặc xóa các nút trong cụm.
 
- <img src="images/redis_cluster.jpeg" alt="Image" width="400" height="300" style="display: block; margin: 0 auto;"> 
+![[redis_cluster.jpeg|397]]
 
- ## **9. Cách cài đặt và cấu hình một Redis server trên Server Linux.**  
-  
+ ## **9. Cách cài đặt và cấu hình một Redis server trên Server Linux.** 
+
