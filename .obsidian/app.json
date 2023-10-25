@@ -2,5 +2,8 @@
   "strictLineBreaks": false,
   "showLineNumber": true,
   "vimMode": false,
-  "defaultViewMode": "preview"
+  "defaultViewMode": "preview",
+  "useMarkdownLinks": true,
+  "attachmentFolderPath": "./",
+  "userIgnoreFilters": null
 }

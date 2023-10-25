@@ -4,5 +4,6 @@
   "cssTheme": "Minimal",
   "nativeMenus": true,
   "translucency": false,
-  "baseFontSize": 16
+  "baseFontSize": 16,
+  "textFontFamily": ""
 }

@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "55444badc7083246",
+        "id": "11f98f32de1d5d4e",
         "type": "tabs",
         "children": [
           {
-            "id": "69ebc7dcbd865033",
+            "id": "4a742180241231c0",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -146,12 +146,14 @@
       "obsidian-markdown-formatting-assistant-plugin:Open Markdown Formatting Assistant": false
     }
   },
-  "active": "69ebc7dcbd865033",
+  "active": "4a742180241231c0",
   "lastOpenFiles": [
-    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/Redis_snapshot.jpg",
+    "docs/index.md",
+    "imagesRedis-v2-separate-08.jpg.md",
     "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/README.md",
-    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/what_is_redis.webp",
     "README.md",
+    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/Redis_snapshot.jpg",
+    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/what_is_redis.webp",
     "README-20231025134020017.webp",
     "2023-10-25.md",
     "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/Redis-v2-01-1.jpg",
@@ -163,7 +165,6 @@
     "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/Redis_replication.png",
     "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/redis_sentinel.png",
     "Recording 20231025125440.webm",
-    "Recording 20231025125420.webm",
-    "docs/index.md"
+    "Recording 20231025125420.webm"
   ]
 }
