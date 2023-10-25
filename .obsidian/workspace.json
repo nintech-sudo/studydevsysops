@@ -70,7 +70,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 395.5
+    "width": 313.5
   },
   "right": {
     "id": "9da34659a3095cc9",
@@ -133,7 +133,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 252.5
+    "width": 252.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -146,7 +147,7 @@
       "obsidian-markdown-formatting-assistant-plugin:Open Markdown Formatting Assistant": false
     }
   },
-  "active": "4a742180241231c0",
+  "active": "4d5d3adc5dfba11f",
   "lastOpenFiles": [
     "docs/index.md",
     "imagesRedis-v2-separate-08.jpg.md",

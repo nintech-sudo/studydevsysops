@@ -62,7 +62,7 @@ Trường hợp Redis đã lưu dữ liệu ( Hit Cache): **Người dùng gửi
 
 Trường hợp Redis chưa lưu dữ liệu ( Miss Cache): **Người dùng gửi yêu cầu > Redis kiểm tra yêu cầu > No > Request đến Database Mysql > Trả dữ liệu cho người dùng > Set Cache vào Redis**.
 
-![[images/How-Redis-typically-works.png]]
+![](images/How-Redis-typically-works.png)
 
 
 
@@ -81,20 +81,20 @@ Redis Persistence là khả năng lưu trữ dữ liệu trên Disk để đảm
  
  Bằng cách sử dụng Redis Persistence, bạn có thể khôi phục dữ liệu sau một sự cố và đảm bảo rằng dữ liệu không bị mất.
  
-![[images/Redis_snapshot.jpg]]
+![](images/Redis_snapshot.jpg)
 
 
  ## **6. Redis Replication là gì?**  
  
  Redis Replication là quá trình sao chép dữ liệu từ một Redis master (chủ) sang nhiều Redis slave (phụ). Khi có sự thay đổi dữ liệu trên Redis master, nó sẽ được chuyển tiếp đến tất cả các Redis slave để đảm bảo dữ liệu được đồng bộ trên toàn bộ hệ thống. Redis Replication cung cấp khả năng chịu lỗi (fault-tolerance) và tăng cường hiệu suất bằng việc cho phép đọc dữ liệu từ các Redis slave.  
 
-![[images/Redis_replication.png]]
+![](images/Redis_replication.png)
 
  ## **7. Redis Sentinel là gì?**  
 
  Redis Sentinel là một công cụ giám sát và quản lý hệ thống Redis. Nó giúp theo dõi sự hoạt động của các Redis master và slave, và tự động thực hiện quá trình failover (chuyển giao) khi một Redis master không hoạt động. Redis Sentinel giúp đảm bảo tính sẵn sàng và ổn định của hệ thống Redis bằng cách tự động chọn một Redis slave mới để thay thế Redis master gốc.  
 
- ![[images/redis_sentinel.png]]
+ ![](images/redis_sentinel.png)
 
  ## **8. Redis Cluster là gì?**  
  

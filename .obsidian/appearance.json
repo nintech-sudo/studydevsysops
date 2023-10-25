@@ -5,5 +5,8 @@
   "nativeMenus": true,
   "translucency": false,
   "baseFontSize": 16,
-  "textFontFamily": ""
+  "textFontFamily": "",
+  "enabledCssSnippets": [
+    "page_width"
+  ]
 }
