@@ -133,26 +133,8 @@ validation:
 
 nav:
   - Server Administration:
-    - Operating Systems:
-    - Network and Security:
-    - Web Server:
     - Database Server:
-      - SQL:
       - NoSQL:
         - Redis:
           - Bạn và tôi hiểu gì về Redis?: ServerAdministration/DatabaseServer/NoSQL/Redis/README.md
-    - Caching:
-
-  - Programing Languages:
-    - Bash/Shell Script:
-    - Python:
-
-  - Monitoring and Logging:
-    - Monitoring:
-    - Logging:
-
-  - Cloud:
-    - Alibabacloud:
-    - AWS:
-    - Google Cloud:
 
