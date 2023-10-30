@@ -4,20 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "11f98f32de1d5d4e",
+        "id": "33eabd173800aeb5",
         "type": "tabs",
         "children": [
           {
-            "id": "4a742180241231c0",
+            "id": "31e0465d4da32f3f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/README.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -81,21 +76,11 @@
         "type": "tabs",
         "children": [
           {
-            "id": "4d5d3adc5dfba11f",
-            "type": "leaf",
-            "state": {
-              "type": "side-panel-control-view",
-              "state": {}
-            }
-          },
-          {
             "id": "8648dd0d3301ccdc",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/README.md"
-              }
+              "state": {}
             }
           },
           {
@@ -104,7 +89,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,13 +112,21 @@
               "type": "calendar",
               "state": {}
             }
+          },
+          {
+            "id": "302ede8496722e3c",
+            "type": "leaf",
+            "state": {
+              "type": "side-panel-control-view",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 252.5,
-    "collapsed": true
+    "width": 263.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -147,12 +139,17 @@
       "obsidian-markdown-formatting-assistant-plugin:Open Markdown Formatting Assistant": false
     }
   },
-  "active": "4d5d3adc5dfba11f",
+  "active": "31e0465d4da32f3f",
   "lastOpenFiles": [
-    "docs/index.md",
-    "imagesRedis-v2-separate-08.jpg.md",
-    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/README.md",
+    "Untitled",
+    "Untitled.md",
+    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/Benmark-Redis/redis-benchmark.md.md",
     "README.md",
+    "docs/index.md",
+    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/README.md",
+    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/Benmark-Redis/images",
+    "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/Benmark-Redis",
+    "imagesRedis-v2-separate-08.jpg.md",
     "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/Redis_snapshot.jpg",
     "docs/ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/images/what_is_redis.webp",
     "README-20231025134020017.webp",

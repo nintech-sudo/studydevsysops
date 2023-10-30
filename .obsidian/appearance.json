@@ -7,6 +7,7 @@
   "baseFontSize": 16,
   "textFontFamily": "",
   "enabledCssSnippets": [
-    "page_width"
-  ]
+    "obsidian"
+  ],
+  "baseFontSizeAction": false
 }
