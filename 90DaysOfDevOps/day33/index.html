@@ -1,0 +1,3355 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="90DaysOfDevOps - Microsoft Azure Networking Models + Azure Management">
+      
+      
+        <meta name="author" content="NinTech">
+      
+      
+        <link rel="canonical" href="https://studyspace.nin.id.vn/90DaysOfDevOps/day33/">
+      
+      
+        <link rel="prev" href="../day32/">
+      
+      
+        <link rel="next" href="../day34/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>#90DaysOfDevOps - Microsoft Azure Networking Models + Azure Management - Day 33 - Study Space SysOpsDev</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-RYW9ZPVJLX"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-RYW9ZPVJLX",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-RYW9ZPVJLX",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#microsoft-azure-networking-models-azure-management" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Study Space SysOpsDev" class="md-header__button md-logo" aria-label="Study Space SysOpsDev" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Study Space SysOpsDev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              #90DaysOfDevOps - Microsoft Azure Networking Models + Azure Management - Day 33
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Study Space SysOpsDev" class="md-nav__button md-logo" aria-label="Study Space SysOpsDev" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Study Space SysOpsDev
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    90DaysOfDevOps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            90DaysOfDevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Introduction - Day 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Responsibilities of a DevOps Engineer - Day 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Application Focused - Day 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - DevOps & Agile - Day 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Plan > Code > Build > Testing > Release > Deploy > Operate > Monitor > - Day 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - DevOps - The real stories - Day 6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Learning a Programming Language - Day 7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Setting up your DevOps environment for Go & Hello World - Day 8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Let's explain the Hello World code - Day 9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Go Workspace - Day 10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Variables & Constants in Go - Day 11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Getting user input with Pointers and a finished program - Day 12
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Tweet your progress with our new App - Day 13
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: DevOps and Linux - Day 14
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Linux Commands for DevOps (Actually everyone) - Day 15
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Managing your Linux System, Filesystem & Storage - Day 16
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day17/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Text Editors - nano vs vim - Day 17
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day18/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - SSH & Web Server - Day 18
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day19/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Automate tasks with bash scripts - Day 19
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day20/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Dev workstation setup - All the pretty things - Day 20
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day21/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: DevOps and Networking - Day 21
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day22/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The OSI Model - The 7 Layers - Day 22
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day23/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Network Protocols - Day 23
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day24/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Network Automation - Day 24
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day25/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Python for Network Automation - Day 25
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day26/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Building our Lab - Day 26
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day27/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Getting Hands-On with Python & Network - Day 27
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day28/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: DevOps & The Cloud - Day 28
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Fundamentals - Day 29
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day30/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Security Models - Day 30
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day31/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Compute Models - Day 31
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day32/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Storage Models - Day 32
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Networking Models + Azure Management - Day 33
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Networking Models + Azure Management - Day 33
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#microsoft-azure-networking-models-azure-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microsoft Azure Networking Models + Azure Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#azure-network-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Network Models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Azure Network Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#virtual-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtual Networks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load-balancing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load Balancing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#azure-management-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Management Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Azure Management Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-portal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Portal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Studio Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloud-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Shell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure CLI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day34/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Hands-On Scenarios - Day 34
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day35/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Git - Version Control - Day 35
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day36/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Installing & Configuring Git - Day 36
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day37/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Gitting to know Git - Day 37
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day38/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Staging & Changing - Day 38
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day39/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Viewing, unstaging, discarding & restoring - Day 39
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day40/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Social Network for code - Day 40
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day41/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Open Source Workflow - Day 41
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day42/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Containers - Day 42
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day43/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - What is Docker & Getting installed - Day 43
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day44/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Docker Images & Hands-On with Docker Desktop - Day 44
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day45/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The anatomy of a Docker Image - Day 45
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day46/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Docker Compose - Day 46
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day47/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Docker Networking & Security - Day 47
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day48/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Alternatives to Docker - Day 48
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day49/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Kubernetes - Day 49
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day50/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Choosing your Kubernetes platform - Day 50
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day51/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Deploying your first Kubernetes Cluster - Day 51
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day52/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Setting up a multinode Kubernetes Cluster - Day 52
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day53/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Rancher Overview - Hands On - Day 53
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day54/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Kubernetes Application Deployment - Day 54
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day55/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - State and Ingress in Kubernetes - Day 55
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day56/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: IaC - Day 56
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day57/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - An intro to Terraform - Day 57
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day58/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - HashiCorp Configuration Language (HCL) - Day 58
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day59/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Create a VM with Terraform & Variables - Day 59
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day60/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Docker Containers, Provisioners & Modules - Day 60
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day61/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Kubernetes & Multiple Environments - Day 61
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day62/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Testing, Tools & Alternatives - Day 62
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day63/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Configuration Management - Day 63
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day64/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Ansible: Getting Started - Day 64
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day65/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Ansible Playbooks - Day 65
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day66/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Ansible Playbooks Continued... - Day 66
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day67/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Using Roles & Deploying a Loadbalancer - Day 67
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day68/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Tags, Variables, Inventory & Database Server config - Day 68
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day69/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - All other things Ansible - Automation Controller (Tower), AWX, Vault - Day 69
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day70/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: CI/CD Pipelines - Day 70
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day71/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - What is Jenkins? - Day 71
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day72/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Getting hands-on with Jenkins - Day 72
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day73/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Building a Jenkins Pipeline - Day 73
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day74/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Hello World - Jenkinsfile App Pipeline - Day 74
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day75/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - GitHub Actions Overview - Day 75
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day76/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - ArgoCD Overview - Day 76
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day77/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Monitoring - Day 77
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day78/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Hands-On Monitoring Tools - Day 78
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day79/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Log Management - Day 79
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - ELK Stack - Day 80
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Fluentd & FluentBit - Day 81
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - EFK Stack - Day 82
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Data Visualisation - Grafana - Day 83
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Data Management - Day 84
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Data Services - Day 85
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Backup all the platforms - Day 86
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day87/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Hands-On Backup & Recovery - Day 87
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Application Focused Backup - Day 88
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Disaster Recovery - Day 89
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Data & Application Mobility - Day 90
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../CICD/Jenkins/steps/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    CICD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    <a href="../Configmgmt/ansible-scenario3/roles/apache2/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Configmgmt
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../Containers/elasticsearch-logstash-kibana/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    
+  
+  
+    <a href="../Monitoring/Elastic%20Stack/extensions/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Monitoring
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ServerAdministration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            ServerAdministration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    <a href="../../ServerAdministration/DatabaseServer/NoSQL/Redis/Benmark-Redis/redis-benchmark.md/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    DatabaseServer
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#microsoft-azure-networking-models-azure-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microsoft Azure Networking Models + Azure Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#azure-network-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Network Models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Azure Network Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#virtual-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtual Networks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load-balancing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load Balancing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#azure-management-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Management Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Azure Management Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-portal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Portal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Studio Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloud-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Shell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure CLI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>#90DaysOfDevOps - Microsoft Azure Networking Models + Azure Management - Day 33</h1>
+
+<h2 id="microsoft-azure-networking-models-azure-management">Microsoft Azure Networking Models + Azure Management<a class="headerlink" href="#microsoft-azure-networking-models-azure-management" title="Permanent link">&para;</a></h2>
+<p>As if today marks the anniversary of Microsoft Azure and its 12th Birthday! (1st February 2022) Anyway, we are going to cover the networking models within Microsoft Azure and some of the management options for Azure. So far we have only used the Azure portal but we have mentioned other areas that can be used to drive and create our resources within the platform.</p>
+<h2 id="azure-network-models">Azure Network Models<a class="headerlink" href="#azure-network-models" title="Permanent link">&para;</a></h2>
+<h3 id="virtual-networks">Virtual Networks<a class="headerlink" href="#virtual-networks" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A virtual network is a construct created in Azure.</li>
+<li>A virtual network has one or more IP ranges assigned to it.</li>
+<li>Virtual networks live within a subscription within a region.</li>
+<li>Virtual subnets are created in the virtual network to break up the network range.</li>
+<li>Virtual machines are placed in virtual subnets.</li>
+<li>All virtual machines within a virtual network can communicate.</li>
+<li>65,536 Private IPs per Virtual Network.</li>
+<li>Only pay for egress traffic from a region. (Data leaving the region)</li>
+<li>IPv4 &amp; IPv6 Supported.</li>
+<li>IPv6 for public-facing and within virtual networks.</li>
+</ul>
+<p>We can liken Azure Virtual Networks to AWS VPCs. However, there are some differences to note:</p>
+<ul>
+<li>In AWS a default VNet is created that is not the case in Microsoft Azure, you have to create your first virtual network to your requirements.</li>
+<li>All Virtual Machines by default in Azure have NAT access to the internet. No NAT Gateways as per AWS.</li>
+<li>In Microsoft Azure, there is no concept of Private or Public subnets.</li>
+<li>Public IPs are a resource that can be assigned to vNICs or Load Balancers.</li>
+<li>The Virtual Network and Subnets have their own ACLs enabling subnet level delegation.</li>
+<li>Subnets across Availability Zones whereas in AWS you have subnets per Availability Zones.</li>
+</ul>
+<p>We also have Virtual Network Peering. This enables virtual networks across tenants and regions to be connected using the Azure backbone. Not transitive but can be enabled via Azure Firewall in the hub virtual network. Using a gateway transit allows peered virtual networks to the connectivity of the connected network and an example of this could ExpressRoute to On-Premises.</p>
+<h3 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Azure utilises Network Security Groups, these are stateful.</li>
+<li>Enable rules to be created and then assigned to a network security group</li>
+<li>Network security groups applied to subnets or VMs.</li>
+<li>When applied to a subnet it is still enforced at the Virtual Machine NIC that it is not an "Edge" device.</li>
+</ul>
+<p><a class="glightbox" href="../Images/Day33_Cloud1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day33_Cloud1.png" /></a></p>
+<ul>
+<li>Rules are combined in a Network Security Group.</li>
+<li>Based on the priority, flexible configurations are possible.</li>
+<li>Lower priority number means high priority.</li>
+<li>Most logic is built by IP Addresses but some tags and labels can also be used.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Priority</th>
+<th>Source Address</th>
+<th>Source Port</th>
+<th>Destination Address</th>
+<th>Destination Port</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inbound 443</td>
+<td>1005</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td>443</td>
+<td>Allow</td>
+</tr>
+<tr>
+<td>ILB</td>
+<td>1010</td>
+<td>Azure LoadBalancer</td>
+<td>*</td>
+<td>*</td>
+<td>10000</td>
+<td>Allow</td>
+</tr>
+<tr>
+<td>Deny All Inbound</td>
+<td>4000</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td>DENY</td>
+</tr>
+</tbody>
+</table>
+<p>We also have Application Security Groups (ASGs)</p>
+<ul>
+<li>Where NSGs are focused on the IP address ranges which may be difficult to maintain for growing environments.</li>
+<li>ASGs enable real names (Monikers) for different application roles to be defined (Webservers, DB servers, WebApp1 etc.)</li>
+<li>The Virtual Machine NIC is made a member of one or more ASGs.</li>
+</ul>
+<p>The ASGs can then be used in rules that are part of Network Security Groups to control the flow of communication and can still use NSG features like service tags.</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Name</th>
+<th>Source</th>
+<th>Destination</th>
+<th>Port</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Allow</td>
+<td>AllowInternettoWeb</td>
+<td>Internet</td>
+<td>WebServers</td>
+<td>443(HTTPS)</td>
+</tr>
+<tr>
+<td>Allow</td>
+<td>AllowWebToApp</td>
+<td>WebServers</td>
+<td>AppServers</td>
+<td>443(HTTPS)</td>
+</tr>
+<tr>
+<td>Allow</td>
+<td>AllowAppToDB</td>
+<td>AppServers</td>
+<td>DbServers</td>
+<td>1443 (MSSQL)</td>
+</tr>
+<tr>
+<td>Deny</td>
+<td>DenyAllinbound</td>
+<td>Any</td>
+<td>Any</td>
+<td>Any</td>
+</tr>
+</tbody>
+</table>
+<h3 id="load-balancing">Load Balancing<a class="headerlink" href="#load-balancing" title="Permanent link">&para;</a></h3>
+<p>Microsoft Azure has two separate load balancing solutions. (the first party, there are third parties available in the Azure marketplace.) Both can operate with externally facing or internally facing endpoints.</p>
+<ul>
+<li>Load Balancer (Layer 4) supporting hash-based distribution and port-forwarding.</li>
+<li>App Gateway (Layer 7) supports features such as SSL offload, cookie-based session affinity and URL-based content routing.</li>
+</ul>
+<p>Also with the App Gateway, you can optionally use the Web Application firewall component.</p>
+<h2 id="azure-management-tools">Azure Management Tools<a class="headerlink" href="#azure-management-tools" title="Permanent link">&para;</a></h2>
+<p>We have spent most of our theory time walking through the Azure Portal, I would suggest that when it comes to following a DevOps culture and process a lot of these tasks, especially around provisioning will be done via an API or a command-line tool. I wanted to touch on some of those other management tools that we have available to us as we need to know this for when we are automating the provisioning of our Azure environments.</p>
+<h3 id="azure-portal">Azure Portal<a class="headerlink" href="#azure-portal" title="Permanent link">&para;</a></h3>
+<p>The Microsoft Azure Portal is a web-based console, that provides an alternative to command-line tools. You can manage your subscriptions within the Azure Portal. Build, Manage, and Monitor everything from a simple web app to complex cloud deployments. Another thing you will find within the portal are these breadcrumbs, JSON as mentioned before is the underpinning of all Azure Resources, It might be that you start in the Portal to understand the features, services and functionality but then later understand the JSON underneath to incorporate into your automated workflows.</p>
+<p><a class="glightbox" href="../Images/Day33_Cloud2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day33_Cloud2.png" /></a></p>
+<p>There is also the Azure Preview portal, this can be used to view and test new and upcoming services and enhancements.</p>
+<p><a class="glightbox" href="../Images/Day33_Cloud3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day33_Cloud3.png" /></a></p>
+<h3 id="powershell">PowerShell<a class="headerlink" href="#powershell" title="Permanent link">&para;</a></h3>
+<p>Before we get into Azure PowerShell it is worth introducing PowerShell first. PowerShell is a task automation and configuration management framework, a command-line shell and a scripting language. We might and dare I say this liken this to what we have covered in the Linux section around shell scripting. PowerShell was very much first found on Windows OS but it is now cross-platform.</p>
+<p>Azure PowerShell is a set of cmdlets for managing Azure resources directly from the PowerShell command line.</p>
+<p>We can see below that you can connect to your subscription using the PowerShell command <code>Connect-AzAccount</code></p>
+<p><a class="glightbox" href="../Images/Day33_Cloud4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day33_Cloud4.png" /></a></p>
+<p>Then if we wanted to find some specific commands associated with Azure VMs we can run the following command. You could spend hours learning and understanding more about this PowerShell programming language.</p>
+<p><a class="glightbox" href="../Images/Day33_Cloud5.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day33_Cloud5.png" /></a></p>
+<p>There are some great quickstarts from Microsoft on getting started and provisioning services from PowerShell <a href="https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps?view=azps-7.1.0">here</a></p>
+<h3 id="visual-studio-code">Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permanent link">&para;</a></h3>
+<p>Like many, and as you have all seen my go-to IDE is Visual Studio Code.</p>
+<p>Visual Studio Code is a free source-code editor made by Microsoft for Windows, Linux and macOS.</p>
+<p>You will see below that there are lots of integrations and tools built into Visual Studio Code that you can use to interact with Microsoft Azure and the services within.</p>
+<p><a class="glightbox" href="../Images/Day33_Cloud6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day33_Cloud6.png" /></a></p>
+<h3 id="cloud-shell">Cloud Shell<a class="headerlink" href="#cloud-shell" title="Permanent link">&para;</a></h3>
+<p>Azure Cloud Shell is an interactive, authenticated, browser-accessible shell for managing Azure resources. It provides the flexibility of choosing the shell experience that best suits the way you work.</p>
+<p><a class="glightbox" href="../Images/Day33_Cloud7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day33_Cloud7.png" /></a></p>
+<p>You can see from the below when we first launch Cloud Shell within the portal we can choose between Bash and PowerShell.</p>
+<p><a class="glightbox" href="../Images/Day33_Cloud8.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day33_Cloud8.png" /></a></p>
+<p>To use the cloud shell you will have to provide a bit of storage in your subscription.</p>
+<p>When you select to use the cloud shell it is spinning up a machine, these machines are temporary but your files are persisted in two ways; through a disk image and a mounted file share.</p>
+<p><a class="glightbox" href="../Images/Day33_Cloud9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day33_Cloud9.png" /></a></p>
+<ul>
+<li>Cloud Shell runs on a temporary host provided on a per-session, per-user basis</li>
+<li>Cloud Shell times out after 20 minutes without interactive activity</li>
+<li>Cloud Shell requires an Azure file share to be mounted</li>
+<li>Cloud Shell uses the same Azure file share for both Bash and PowerShell</li>
+<li>Cloud Shell is assigned one machine per user account</li>
+<li>Cloud Shell persists $HOME using a 5-GB image held in your file share</li>
+<li>Permissions are set as a regular Linux user in Bash</li>
+</ul>
+<p>The above was copied from <a href="https://docs.microsoft.com/en-us/azure/cloud-shell/overview">Cloud Shell Overview</a></p>
+<h3 id="azure-cli">Azure CLI<a class="headerlink" href="#azure-cli" title="Permanent link">&para;</a></h3>
+<p>Finally, I want to cover the Azure CLI, The Azure CLI can be installed on Windows, Linux and macOS. Once installed you can type <code>az</code> followed by other commands to create, update, delete and view Azure resources.</p>
+<p>When I initially came into my Azure learning I was a little confused by there being Azure PowerShell and the Azure CLI.</p>
+<p>I would love some feedback from the community on this as well. But the way I see it is that Azure PowerShell is a module added to Windows PowerShell or PowerShell Core (Also available on other OS but not all) Whereas Azure CLI is a cross-platform command-line program that connects to Azure and executes those commands.</p>
+<p>Both of these options have a different syntax, although they can from what I can see and what I have done do very similar tasks.</p>
+<p>For example, creating a virtual machine from PowerShell would use the <code>New-AzVM</code> cmdlet whereas Azure CLI would use <code>az VM create</code>.</p>
+<p>You saw previously that I have the Azure PowerShell module installed on my system but then I also have the Azure CLI installed that can be called through PowerShell on my Windows machine.</p>
+<p><a class="glightbox" href="../Images/Day33_Cloud10.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day33_Cloud10.png" /></a></p>
+<p>The takeaway here as we already mentioned is about choosing the right tool. Azure runs on automation. Every action you take inside the portal translates somewhere to code being executed to read, create, modify, or delete resources.</p>
+<p>Azure CLI</p>
+<ul>
+<li>Cross-platform command-line interface, installable on Windows, macOS, Linux</li>
+<li>Runs in Windows PowerShell, Cmd, Bash and other Unix shells.</li>
+</ul>
+<p>Azure PowerShell</p>
+<ul>
+<li>Cross-platform PowerShell module, runs on Windows, macOS, Linux</li>
+<li>Requires Windows PowerShell or PowerShell</li>
+</ul>
+<p>If there is a reason you cannot use PowerShell in your environment but you can use .mdor bash then the Azure CLI is going to be your choice.</p>
+<p>Next up we take all the theories we have been through and create some scenarios and get hands-on in Azure.</p>
+<h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=qkj5W98Xdvw">Hybrid Cloud and MultiCloud</a></li>
+<li><a href="https://www.youtube.com/watch?v=NKEFWyqJ5XA&amp;list=WL&amp;index=130&amp;t=12s">Microsoft Azure Fundamentals</a></li>
+<li><a href="https://www.youtube.com/watch?v=UGRDM86MBIQ&amp;list=WL&amp;index=131&amp;t=10s">Google Cloud Digital Leader Certification Course</a></li>
+<li><a href="https://www.youtube.com/watch?v=ulprqHHWlng&amp;t=5352s">AWS Basics for Beginners - Full Course</a></li>
+</ul>
+<p>See you on <a href="../day34/">Day 34</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../day32/" class="md-footer__link md-footer__link--prev" aria-label="Previous: #90DaysOfDevOps - Microsoft Azure Storage Models - Day 32">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                #90DaysOfDevOps - Microsoft Azure Storage Models - Day 32
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../day34/" class="md-footer__link md-footer__link--next" aria-label="Next: #90DaysOfDevOps - Microsoft Azure Hands-On Scenarios - Day 34">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                #90DaysOfDevOps - Microsoft Azure Hands-On Scenarios - Day 34
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "navigation.instant", "navigation.instant.prefetch", "navigation.tracking", "navigation.sections", "navigation.footer", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "search.highlight", "search.share", "search.suggest", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

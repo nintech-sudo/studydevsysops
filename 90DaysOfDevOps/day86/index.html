@@ -1,0 +1,3193 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="90DaysOfDevOps - Backup all the platforms">
+      
+      
+        <meta name="author" content="NinTech">
+      
+      
+        <link rel="canonical" href="https://studyspace.nin.id.vn/90DaysOfDevOps/day86/">
+      
+      
+        <link rel="prev" href="../day85/">
+      
+      
+        <link rel="next" href="../day87/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>#90DaysOfDevOps - Backup all the platforms - Day 86 - Study Space SysOpsDev</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-RYW9ZPVJLX"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-RYW9ZPVJLX",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-RYW9ZPVJLX",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#backup-all-the-platforms" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Study Space SysOpsDev" class="md-header__button md-logo" aria-label="Study Space SysOpsDev" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Study Space SysOpsDev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              #90DaysOfDevOps - Backup all the platforms - Day 86
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Study Space SysOpsDev" class="md-nav__button md-logo" aria-label="Study Space SysOpsDev" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Study Space SysOpsDev
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    90DaysOfDevOps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            90DaysOfDevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Introduction - Day 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Responsibilities of a DevOps Engineer - Day 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Application Focused - Day 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - DevOps & Agile - Day 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Plan > Code > Build > Testing > Release > Deploy > Operate > Monitor > - Day 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - DevOps - The real stories - Day 6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Learning a Programming Language - Day 7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Setting up your DevOps environment for Go & Hello World - Day 8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Let's explain the Hello World code - Day 9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Go Workspace - Day 10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Variables & Constants in Go - Day 11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Getting user input with Pointers and a finished program - Day 12
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Tweet your progress with our new App - Day 13
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: DevOps and Linux - Day 14
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Linux Commands for DevOps (Actually everyone) - Day 15
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Managing your Linux System, Filesystem & Storage - Day 16
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day17/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Text Editors - nano vs vim - Day 17
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day18/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - SSH & Web Server - Day 18
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day19/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Automate tasks with bash scripts - Day 19
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day20/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Dev workstation setup - All the pretty things - Day 20
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day21/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: DevOps and Networking - Day 21
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day22/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The OSI Model - The 7 Layers - Day 22
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day23/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Network Protocols - Day 23
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day24/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Network Automation - Day 24
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day25/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Python for Network Automation - Day 25
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day26/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Building our Lab - Day 26
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day27/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Getting Hands-On with Python & Network - Day 27
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day28/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: DevOps & The Cloud - Day 28
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Fundamentals - Day 29
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day30/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Security Models - Day 30
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day31/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Compute Models - Day 31
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day32/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Storage Models - Day 32
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day33/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Networking Models + Azure Management - Day 33
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day34/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Hands-On Scenarios - Day 34
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day35/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Git - Version Control - Day 35
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day36/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Installing & Configuring Git - Day 36
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day37/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Gitting to know Git - Day 37
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day38/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Staging & Changing - Day 38
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day39/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Viewing, unstaging, discarding & restoring - Day 39
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day40/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Social Network for code - Day 40
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day41/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Open Source Workflow - Day 41
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day42/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Containers - Day 42
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day43/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - What is Docker & Getting installed - Day 43
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day44/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Docker Images & Hands-On with Docker Desktop - Day 44
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day45/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The anatomy of a Docker Image - Day 45
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day46/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Docker Compose - Day 46
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day47/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Docker Networking & Security - Day 47
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day48/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Alternatives to Docker - Day 48
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day49/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Kubernetes - Day 49
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day50/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Choosing your Kubernetes platform - Day 50
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day51/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Deploying your first Kubernetes Cluster - Day 51
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day52/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Setting up a multinode Kubernetes Cluster - Day 52
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day53/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Rancher Overview - Hands On - Day 53
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day54/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Kubernetes Application Deployment - Day 54
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day55/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - State and Ingress in Kubernetes - Day 55
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day56/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: IaC - Day 56
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day57/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - An intro to Terraform - Day 57
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day58/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - HashiCorp Configuration Language (HCL) - Day 58
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day59/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Create a VM with Terraform & Variables - Day 59
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day60/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Docker Containers, Provisioners & Modules - Day 60
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day61/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Kubernetes & Multiple Environments - Day 61
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day62/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Testing, Tools & Alternatives - Day 62
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day63/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Configuration Management - Day 63
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day64/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Ansible: Getting Started - Day 64
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day65/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Ansible Playbooks - Day 65
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day66/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Ansible Playbooks Continued... - Day 66
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day67/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Using Roles & Deploying a Loadbalancer - Day 67
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day68/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Tags, Variables, Inventory & Database Server config - Day 68
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day69/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - All other things Ansible - Automation Controller (Tower), AWX, Vault - Day 69
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day70/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: CI/CD Pipelines - Day 70
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day71/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - What is Jenkins? - Day 71
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day72/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Getting hands-on with Jenkins - Day 72
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day73/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Building a Jenkins Pipeline - Day 73
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day74/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Hello World - Jenkinsfile App Pipeline - Day 74
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day75/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - GitHub Actions Overview - Day 75
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day76/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - ArgoCD Overview - Day 76
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day77/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Monitoring - Day 77
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day78/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Hands-On Monitoring Tools - Day 78
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day79/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Log Management - Day 79
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - ELK Stack - Day 80
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Fluentd & FluentBit - Day 81
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - EFK Stack - Day 82
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Data Visualisation - Grafana - Day 83
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Data Management - Day 84
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Data Services - Day 85
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Backup all the platforms - Day 86
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Backup all the platforms - Day 86
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#backup-all-the-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup all the platforms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backup all the platforms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-2-1-backup-methodolgy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3-2-1 Backup Methodolgy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup-responsibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup Responsibility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nobody-cares-till-everybody-cares" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nobody cares till everybody cares
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup Scenario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-kopia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Kopia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-a-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up a Repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#offsite-backup-to-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Offsite backup to S3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day87/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Hands-On Backup & Recovery - Day 87
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Application Focused Backup - Day 88
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Disaster Recovery - Day 89
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Data & Application Mobility - Day 90
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../CICD/Jenkins/steps/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    CICD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    <a href="../Configmgmt/ansible-scenario3/roles/apache2/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Configmgmt
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../Containers/elasticsearch-logstash-kibana/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    
+  
+  
+    <a href="../Monitoring/Elastic%20Stack/extensions/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Monitoring
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ServerAdministration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            ServerAdministration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    <a href="../../ServerAdministration/DatabaseServer/NoSQL/Redis/Benmark-Redis/redis-benchmark.md/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    DatabaseServer
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#backup-all-the-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup all the platforms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backup all the platforms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-2-1-backup-methodolgy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3-2-1 Backup Methodolgy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup-responsibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup Responsibility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nobody-cares-till-everybody-cares" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nobody cares till everybody cares
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup Scenario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-kopia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Kopia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-a-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up a Repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#offsite-backup-to-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Offsite backup to S3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>#90DaysOfDevOps - Backup all the platforms - Day 86</h1>
+
+<h2 id="backup-all-the-platforms">Backup all the platforms<a class="headerlink" href="#backup-all-the-platforms" title="Permanent link">&para;</a></h2>
+<p>During this whole challenge, we discussed many different platforms and environments. One thing all of those have in common is the fact they all need some level of data protection!</p>
+<p>Data Protection has been around for many many years but the wealth of data that we have today and the value that this data brings means we have to make sure we are not only resilient to infrastructure failure by having multiple nodes and high availability across applications but we must also consider that we need a copy of that data, that important data in a safe and secure location if a failure scenario was to occur.</p>
+<p>We hear a lot these days it seems about cybercrime and ransomware, and don't get me wrong this is a massive threat and I stand by the fact that you will be attacked by ransomware. It is not a matter of if it is a matter of when. So even more reason to make sure you have your data secure for when that time arises. However, the most common cause for data loss is not ransomware or cybercrime it is simply accidental deletion!</p>
+<p>We have all done it, deleted something we shouldn't have and had that instant regret.</p>
+<p>With all of the technology and automation we have discussed during the challenge, the requirement to protect any stateful data or even complex stateless configuration is still there, regardless of the platform.</p>
+<p><a class="glightbox" href="../Images/Day86_Data1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data1.png" /></a></p>
+<p>But we should be able to perform that protection of the data with automation in mind and be able to integrate it into our workflows.</p>
+<p>If we look at what backup is:</p>
+<p><em>In information technology, a backup, or data backup is a copy of computer data taken and stored elsewhere so that it may be used to restore the original after a data loss event. The verb form, referring to the process of doing so, is "back up", whereas the noun and adjective form is "backup".</em></p>
+<p>If we break this down to the simplest form, a backup is a copy and paste of data to a new location. Simply put I could take a backup right now by copying a file from my C: drive to my D: drive and I would then have a copy in case something happened to the C: drive or something was edited wrongly within the files. I could revert to the copy I have on the D: drive. Now if my computer dies where both the C &amp; D drives live then I am not protected so I have to consider a solution or a copy of data outside of my system maybe onto a NAS drive in my house? But then what happens if something happens to my house, maybe I need to consider storing it on another system in another location, maybe the cloud is an option. Maybe I could store a copy of my important files in several locations to mitigate the risk of failure?</p>
+<h3 id="3-2-1-backup-methodolgy">3-2-1 Backup Methodolgy<a class="headerlink" href="#3-2-1-backup-methodolgy" title="Permanent link">&para;</a></h3>
+<p>Now seems a good time to talk about the 3-2-1 rule or backup methodology. I did a <a href="https://www.youtube.com/watch?v=5wRt1bJfKBw">lightning talk</a> covering this topic.</p>
+<p>We have already mentioned before some of the extreme ends of why we need to protect our data but a few more are listed below:</p>
+<p><a class="glightbox" href="../Images/Day86_Data2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data2.png" /></a></p>
+<p>Which then allows me to talk about the 3-2-1 methodology. My first copy or backup of my data should be as close to my production system as possible, the reason for this is based on speed to recovery and again going back to that original point about accidental deletion this is going to be the most common reason for recovery. But I want to be storing that on a suitable second media outside of the original or production system.</p>
+<p>We then want to make sure we also send a copy of our data external or offsite this is where a second location comes in be it another house, building, data centre or the public cloud.</p>
+<p><a class="glightbox" href="../Images/Day86_Data3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data3.png" /></a></p>
+<h3 id="backup-responsibility">Backup Responsibility<a class="headerlink" href="#backup-responsibility" title="Permanent link">&para;</a></h3>
+<p>We have most likely heard all of the myths when it comes to not having to backup, things like "Everything is stateless" I mean if everything is stateless then what is the business? no databases? word documents? There is a level of responsibility on every individual within the business to ensure they are protected but it is going to come down most likely to the operations teams to provide the backup process for the mission-critical applications and data.</p>
+<p>Another good one is that "High availability is my backup, we have built in multiple nodes into our cluster there is no way this is going down!" apart from when you make a mistake to the database and this is replicated over all the nodes in the cluster, or there is fire, flood or blood scenario that means the cluster is no longer available and with it the important data. It's not about being stubborn it is about being aware of the data and the services, absolutely everyone should factor in high availability and fault tolerance into their architecture but that does not substitute the need for backup!</p>
+<p>Replication can also seem to give us the offsite copy of the data and maybe that cluster mentioned above does live across multiple locations, however, the first accidental mistake would still be replicated there. But again a Backup requirement should stand alongside application replication or system replication within the environment.</p>
+<p>Now with all this said you can go to the extreme on the other end as well and send copies of data to too many locations which is going to not only cost but also increase the risk of being attacked as your surface area is now massively expanded.</p>
+<p>Anyway, who looks after backup? It will be different within each business but someone should be taking it upon themselves to understand the backup requirements. But also understand the recovery plan!</p>
+<h3 id="nobody-cares-till-everybody-cares">Nobody cares till everybody cares<a class="headerlink" href="#nobody-cares-till-everybody-cares" title="Permanent link">&para;</a></h3>
+<p>Backup is a prime example, nobody cares about backup until you need to restore something. Alongside the requirement to back our data up we also need to consider how we restore!</p>
+<p>With our text document example, we are talking about very small files so the ability to copy back and forth is easy and fast. But if we are talking about 100GB plus files then this is going to take time. Also, we have to consider the level at which we need to recover if we take a virtual machine for example.</p>
+<p>We have the whole Virtual Machine, we have the Operating System, Application installation and then if this is a database server we will have some database files as well. If we have made a mistake and inserted the wrong line of code into our database I probably don't need to restore the whole virtual machine, I want to be granular on what I recover back.</p>
+<h3 id="backup-scenario">Backup Scenario<a class="headerlink" href="#backup-scenario" title="Permanent link">&para;</a></h3>
+<p>I want to now start building on a scenario to protect some data, specifically, I want to protect some files on my local machine (in this case Windows but the tool I am going to use is not only free and open-source but also cross-platform) I would like to make sure they are protected to a NAS device I have locally in my home but also into an Object Storage bucket in the cloud.</p>
+<p>I want to back up this important data, it just so happens to be the repository for the 90DaysOfDevOps, which yes is also being sent to GitHub which is probably where you are reading this now but what if my machine was to die and GitHub was down? How would anyone be able to read the content but also how would I potentially be able to restore that data to another service?</p>
+<p><a class="glightbox" href="../Images/Day86_Data5.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data5.png" /></a></p>
+<p>There are lots of tools that can help us achieve this but I am going to be using a tool called <a href="https://kopia.io/">Kopia</a> an Open-Source backup tool which will enable us to encrypt, dedupe and compress our backups whilst being able to send them to many locations.</p>
+<p>You will find the releases to download <a href="https://github.com/kopia/kopia/releases">here</a> at the time of writing I will be using v0.10.6.</p>
+<h3 id="installing-kopia">Installing Kopia<a class="headerlink" href="#installing-kopia" title="Permanent link">&para;</a></h3>
+<p>There is a Kopia CLI and GUI, we will be using the GUI but know that you can have a CLI version of this as well for those Linux servers that do not give you a GUI.</p>
+<p>I will be using <code>KopiaUI-Setup-0.10.6.exe</code></p>
+<p>Really quick next next installation and then when you open the application you are greeted with the choice of selecting the storage type that you wish to use as your backup repository.</p>
+<p><a class="glightbox" href="../Images/Day86_Data6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data6.png" /></a></p>
+<h3 id="setting-up-a-repository">Setting up a Repository<a class="headerlink" href="#setting-up-a-repository" title="Permanent link">&para;</a></h3>
+<p>Firstly we would like to set up a repository using our local NAS device and we are going to do this using SMB, but we could also use NFS I believe.</p>
+<p><a class="glightbox" href="../Images/Day86_Data7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data7.png" /></a></p>
+<p>On the next screen, we are going to define a password, this password is used to encrypt the repository contents.</p>
+<p><a class="glightbox" href="../Images/Day86_Data8.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data8.png" /></a></p>
+<p>Now that we have the repository configured we can trigger an ad-hoc snapshot to start writing data to it.</p>
+<p><a class="glightbox" href="../Images/Day86_Data9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data9.png" /></a></p>
+<p>First up we need to enter a path to what we want to snapshot and in our case we want to take a copy of our <code>90DaysOfDevOps</code> folder. We will get back to the scheduling aspect shortly.</p>
+<p><a class="glightbox" href="../Images/Day86_Data10.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data10.png" /></a></p>
+<p>We can define our snapshot retention.</p>
+<p><a class="glightbox" href="../Images/Day86_Data11.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data11.png" /></a></p>
+<p>Maybe there are files or file types that we wish to exclude.</p>
+<p><a class="glightbox" href="../Images/Day86_Data12.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data12.png" /></a></p>
+<p>If we wanted to define a schedule we could do this on this next screen, when you first create this snapshot this is the opening page to define.</p>
+<p><a class="glightbox" href="../Images/Day86_Data13.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data13.png" /></a></p>
+<p>And you will see several other settings that can be handled here.</p>
+<p><a class="glightbox" href="../Images/Day86_Data14.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data14.png" /></a></p>
+<p>Select snapshot now and the data will be written to your repository.</p>
+<p><a class="glightbox" href="../Images/Day86_Data15.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data15.png" /></a></p>
+<h3 id="offsite-backup-to-s3">Offsite backup to S3<a class="headerlink" href="#offsite-backup-to-s3" title="Permanent link">&para;</a></h3>
+<p>With Kopia we can through the UI it seems only to have one repository configured at a time. But through the UI we can be creative and have multiple repository configuration files to choose from to achieve our goal of having a copy local and offsite in Object Storage.</p>
+<p>The Object Storage I am choosing to send my data to is going to Google Cloud Storage. I firstly logged into my Google Cloud Platform account and created a storage bucket. I already had the Google Cloud SDK installed on my system but running the <code>gcloud auth application-default login</code> authenticated me with my account.</p>
+<p><a class="glightbox" href="../Images/Day86_Data16.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data16.png" /></a></p>
+<p>I then used the CLI of Kopia to show me the current status of my repository after we added our SMB repository in the previous steps. I did this using the <code>"C:\Program Files\KopiaUI\resources\server\kopia.exe" --config-file=C:\Users\micha\AppData\Roaming\kopia\repository.config repository status</code> command.</p>
+<p><a class="glightbox" href="../Images/Day86_Data17.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data17.png" /></a></p>
+<p>We are now ready to replace for the demo the configuration for the repository, what we would probably do if we wanted a long-term solution to hit both of these repositories is we would create an <code>smb.config</code> file and a <code>object.config</code> file and be able to run both of these commands to send our copies of data to each location. To add our repository we ran <code>"C:\Program Files\KopiaUI\resources\server\kopia.exe" --config-file=C:\Users\micha\AppData\Roaming\kopia\repository.config repository create gcs --bucket 90daysofdevops</code></p>
+<p>The above command is taking into account that the Google Cloud Storage bucket we created is called <code>90daysofdevops</code></p>
+<p><a class="glightbox" href="../Images/Day86_Data18.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data18.png" /></a></p>
+<p>Now that we have created our new repository we can then run the <code>"C:\Program Files\KopiaUI\resources\server\kopia.exe" --config-file=C:\Users\micha\AppData\Roaming\kopia\repository.config repository status</code> command again and will now show the GCS repository configuration.</p>
+<p><a class="glightbox" href="../Images/Day86_Data19.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data19.png" /></a></p>
+<p>The next thing we need to do is create a snapshot and send that to our newly created repository. Using the <code>"C:\Program Files\KopiaUI\resources\server\kopia.exe" --config-file=C:\Users\micha\AppData\Roaming\kopia\repository.config kopia snapshot create "C:\Users\micha\demo\90DaysOfDevOps"</code> command we can kick off this process. You can see in the below browser that our Google Cloud Storage bucket now has kopia files based on our backup in place.</p>
+<p><a class="glightbox" href="../Images/Day86_Data20.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data20.png" /></a></p>
+<p>With the above process we can settle our requirement of sending our important data to 2 different locations, 1 of which is offsite in Google Cloud Storage and of course we still have our production copy of our data on a different media type.</p>
+<h3 id="restore">Restore<a class="headerlink" href="#restore" title="Permanent link">&para;</a></h3>
+<p>Restore is another consideration and is very important, Kopia gives us the capability to not only restore to the existing location but also a new location.</p>
+<p>If we run the command <code>"C:\Program Files\KopiaUI\resources\server\kopia.exe" --config-file=C:\Users\micha\AppData\Roaming\kopia\repository.config snapshot list</code> this will list the snapshots that we have currently in our configured repository (GCS)</p>
+<p><a class="glightbox" href="../Images/Day86_Data21.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data21.png" /></a></p>
+<p>We can then mount those snapshots directly from GCS using the <code>"C:\Program Files\KopiaUI\resources\server\kopia.exe" --config-file=C:\Users\micha\AppData\Roaming\kopia\repository.config mount all Z:</code> command.</p>
+<p><a class="glightbox" href="../Images/Day86_Data22.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day86_Data22.png" /></a></p>
+<p>We could also restore the snapshot contents using <code>kopia snapshot restore kdbd9dff738996cfe7bcf99b45314e193</code></p>
+<p>The commands above are very long and this is because I was using the KopiaUI version of the kopia.exe as explained at the top of the walkthrough you can download the kopia.exe and put it into a path so you can just use the <code>kopia</code> command.</p>
+<p>In the next session, we will be focusing on protecting workloads within Kubernetes.</p>
+<h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=01qcYSck1c4&amp;t=217s">Kubernetes Backup and Restore made easy!</a></li>
+<li><a href="https://www.youtube.com/watch?v=zybLTQER0yY">Kubernetes Backups, Upgrades, Migrations - with Velero</a></li>
+<li><a href="https://www.youtube.com/watch?v=W2Z7fbCLSTw&amp;t=520s">7 Database Paradigms</a></li>
+<li><a href="https://www.youtube.com/watch?v=07EHsPuKXc0">Disaster Recovery vs. Backup: What's the difference?</a></li>
+<li><a href="https://www.youtube.com/watch?v=hDBlTdzE6Us&amp;t=3s">Veeam Portability &amp; Cloud Mobility</a></li>
+</ul>
+<p>See you on <a href="../day87/">Day 87</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../day85/" class="md-footer__link md-footer__link--prev" aria-label="Previous: #90DaysOfDevOps - Data Services - Day 85">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                #90DaysOfDevOps - Data Services - Day 85
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../day87/" class="md-footer__link md-footer__link--next" aria-label="Next: #90DaysOfDevOps - Hands-On Backup &amp; Recovery - Day 87">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                #90DaysOfDevOps - Hands-On Backup & Recovery - Day 87
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "navigation.instant", "navigation.instant.prefetch", "navigation.tracking", "navigation.sections", "navigation.footer", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "search.highlight", "search.share", "search.suggest", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

@@ -1,0 +1,3214 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="90DaysOfDevOps - Viewing, unstaging, discarding & restoring">
+      
+      
+        <meta name="author" content="NinTech">
+      
+      
+        <link rel="canonical" href="https://studyspace.nin.id.vn/90DaysOfDevOps/day39/">
+      
+      
+        <link rel="prev" href="../day38/">
+      
+      
+        <link rel="next" href="../day40/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>#90DaysOfDevOps - Viewing, unstaging, discarding & restoring - Day 39 - Study Space SysOpsDev</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-RYW9ZPVJLX"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-RYW9ZPVJLX",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-RYW9ZPVJLX",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#viewing-unstaging-discarding-restoring" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Study Space SysOpsDev" class="md-header__button md-logo" aria-label="Study Space SysOpsDev" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Study Space SysOpsDev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              #90DaysOfDevOps - Viewing, unstaging, discarding & restoring - Day 39
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Study Space SysOpsDev" class="md-nav__button md-logo" aria-label="Study Space SysOpsDev" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Study Space SysOpsDev
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    90DaysOfDevOps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            90DaysOfDevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Introduction - Day 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Responsibilities of a DevOps Engineer - Day 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Application Focused - Day 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - DevOps & Agile - Day 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Plan > Code > Build > Testing > Release > Deploy > Operate > Monitor > - Day 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - DevOps - The real stories - Day 6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Learning a Programming Language - Day 7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Setting up your DevOps environment for Go & Hello World - Day 8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Let's explain the Hello World code - Day 9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Go Workspace - Day 10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Variables & Constants in Go - Day 11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Getting user input with Pointers and a finished program - Day 12
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Tweet your progress with our new App - Day 13
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: DevOps and Linux - Day 14
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Linux Commands for DevOps (Actually everyone) - Day 15
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Managing your Linux System, Filesystem & Storage - Day 16
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day17/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Text Editors - nano vs vim - Day 17
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day18/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - SSH & Web Server - Day 18
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day19/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Automate tasks with bash scripts - Day 19
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day20/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Dev workstation setup - All the pretty things - Day 20
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day21/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: DevOps and Networking - Day 21
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day22/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The OSI Model - The 7 Layers - Day 22
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day23/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Network Protocols - Day 23
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day24/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Network Automation - Day 24
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day25/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Python for Network Automation - Day 25
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day26/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Building our Lab - Day 26
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day27/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Getting Hands-On with Python & Network - Day 27
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day28/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: DevOps & The Cloud - Day 28
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Fundamentals - Day 29
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day30/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Security Models - Day 30
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day31/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Compute Models - Day 31
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day32/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Storage Models - Day 32
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day33/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Networking Models + Azure Management - Day 33
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day34/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Hands-On Scenarios - Day 34
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day35/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Git - Version Control - Day 35
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day36/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Installing & Configuring Git - Day 36
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day37/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Gitting to know Git - Day 37
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day38/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Staging & Changing - Day 38
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Viewing, unstaging, discarding & restoring - Day 39
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Viewing, unstaging, discarding & restoring - Day 39
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#viewing-unstaging-discarding-restoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing, unstaging, discarding &amp; restoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Viewing, unstaging, discarding & restoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#viewing-the-staged-and-unstaged-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing the Staged and Unstaged Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-diff-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Diff Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-the-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing the History
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-a-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing a Commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unstaging-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unstaging Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discarding-local-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discarding Local Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restoring-a-file-to-an-earlier-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restoring a File to an Earlier Version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebase-vs-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rebase vs Merge
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day40/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Social Network for code - Day 40
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day41/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Open Source Workflow - Day 41
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day42/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Containers - Day 42
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day43/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - What is Docker & Getting installed - Day 43
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day44/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Docker Images & Hands-On with Docker Desktop - Day 44
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day45/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The anatomy of a Docker Image - Day 45
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day46/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Docker Compose - Day 46
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day47/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Docker Networking & Security - Day 47
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day48/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Alternatives to Docker - Day 48
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day49/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Kubernetes - Day 49
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day50/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Choosing your Kubernetes platform - Day 50
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day51/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Deploying your first Kubernetes Cluster - Day 51
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day52/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Setting up a multinode Kubernetes Cluster - Day 52
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day53/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Rancher Overview - Hands On - Day 53
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day54/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Kubernetes Application Deployment - Day 54
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day55/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - State and Ingress in Kubernetes - Day 55
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day56/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: IaC - Day 56
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day57/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - An intro to Terraform - Day 57
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day58/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - HashiCorp Configuration Language (HCL) - Day 58
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day59/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Create a VM with Terraform & Variables - Day 59
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day60/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Docker Containers, Provisioners & Modules - Day 60
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day61/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Kubernetes & Multiple Environments - Day 61
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day62/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Testing, Tools & Alternatives - Day 62
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day63/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Configuration Management - Day 63
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day64/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Ansible: Getting Started - Day 64
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day65/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Ansible Playbooks - Day 65
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day66/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Ansible Playbooks Continued... - Day 66
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day67/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Using Roles & Deploying a Loadbalancer - Day 67
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day68/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Tags, Variables, Inventory & Database Server config - Day 68
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day69/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - All other things Ansible - Automation Controller (Tower), AWX, Vault - Day 69
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day70/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: CI/CD Pipelines - Day 70
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day71/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - What is Jenkins? - Day 71
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day72/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Getting hands-on with Jenkins - Day 72
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day73/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Building a Jenkins Pipeline - Day 73
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day74/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Hello World - Jenkinsfile App Pipeline - Day 74
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day75/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - GitHub Actions Overview - Day 75
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day76/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - ArgoCD Overview - Day 76
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day77/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Monitoring - Day 77
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day78/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Hands-On Monitoring Tools - Day 78
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day79/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Log Management - Day 79
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - ELK Stack - Day 80
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Fluentd & FluentBit - Day 81
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - EFK Stack - Day 82
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Data Visualisation - Grafana - Day 83
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Data Management - Day 84
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Data Services - Day 85
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Backup all the platforms - Day 86
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day87/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Hands-On Backup & Recovery - Day 87
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Application Focused Backup - Day 88
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Disaster Recovery - Day 89
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Data & Application Mobility - Day 90
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../CICD/Jenkins/steps/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    CICD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    <a href="../Configmgmt/ansible-scenario3/roles/apache2/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Configmgmt
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../Containers/elasticsearch-logstash-kibana/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    
+  
+  
+    <a href="../Monitoring/Elastic%20Stack/extensions/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Monitoring
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ServerAdministration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            ServerAdministration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    <a href="../../ServerAdministration/DatabaseServer/NoSQL/Redis/Benmark-Redis/redis-benchmark.md/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    DatabaseServer
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#viewing-unstaging-discarding-restoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing, unstaging, discarding &amp; restoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Viewing, unstaging, discarding & restoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#viewing-the-staged-and-unstaged-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing the Staged and Unstaged Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-diff-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Diff Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-the-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing the History
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-a-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing a Commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unstaging-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unstaging Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discarding-local-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discarding Local Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restoring-a-file-to-an-earlier-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restoring a File to an Earlier Version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebase-vs-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rebase vs Merge
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>#90DaysOfDevOps - Viewing, unstaging, discarding & restoring - Day 39</h1>
+
+<h2 id="viewing-unstaging-discarding-restoring">Viewing, unstaging, discarding &amp; restoring<a class="headerlink" href="#viewing-unstaging-discarding-restoring" title="Permanent link">&para;</a></h2>
+<p>Continuing from where we finished yesterday around some of the commands that we have with git and how to leverage git with your projects. Remember we have not touched GitHub or any other git-based services yet this is all to help you keep control of your projects locally at the moment, but they will all become useful when we start to integrate into those tools.</p>
+<h3 id="viewing-the-staged-and-unstaged-changes">Viewing the Staged and Unstaged Changes<a class="headerlink" href="#viewing-the-staged-and-unstaged-changes" title="Permanent link">&para;</a></h3>
+<p>It is good practice to make sure you view the staged and unstaged code before committing. We can do this by running the <code>git diff --staged</code> command</p>
+<p><a class="glightbox" href="../Images/Day39_Git1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git1.png" /></a></p>
+<p>This then shows us all the changes we have made and all new files we have added or deleted.</p>
+<p>changes in the modified files are indicated with <code>---</code> or <code>+++</code> you can see below that we just added +add some text below which means they are new lines.</p>
+<p><a class="glightbox" href="../Images/Day39_Git2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git2.png" /></a></p>
+<p>We can also run <code>git diff</code> to compare our staging area with our working directory. If we make some changes to our newly added file code.txt and add some lines of text.</p>
+<p><a class="glightbox" href="../Images/Day39_Git3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git3.png" /></a></p>
+<p>If we then run <code>git diff</code> we compare and see the output below.</p>
+<p><a class="glightbox" href="../Images/Day39_Git4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git4.png" /></a></p>
+<h3 id="visual-diff-tools">Visual Diff Tools<a class="headerlink" href="#visual-diff-tools" title="Permanent link">&para;</a></h3>
+<p>For me, the above is more confusing so I would much rather use a visual tool,</p>
+<p>To name a few visual diff tools:</p>
+<ul>
+<li>KDiff3</li>
+<li>P4Merge</li>
+<li>WinMerge (Windows Only)</li>
+<li>VSCode</li>
+</ul>
+<p>To set this in git we run the following command <code>git config --global diff.tool vscode</code></p>
+<p>We are going to run the above and we are going to set some parameters when we launch VScode.</p>
+<p><a class="glightbox" href="../Images/Day39_Git5.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git5.png" /></a></p>
+<p>We can also check our configuration with <code>git config --global -e</code></p>
+<p><a class="glightbox" href="../Images/Day39_Git6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git6.png" /></a></p>
+<p>We can then use <code>git difftool</code> to now open our diff visual tool.</p>
+<p><a class="glightbox" href="../Images/Day39_Git7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git7.png" /></a></p>
+<p>Which then opens our VScode editor on the diff page and compares the two, we have only modified one file from nothing to now adding a line of code on the right side.</p>
+<p><a class="glightbox" href="../Images/Day39_Git8.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git8.png" /></a></p>
+<p>I find this method much easier to track changes and this is something similar to what we will see when we look into git-based services such as GitHub.</p>
+<p>We can also use <code>git difftool --staged</code> to compare stage with committed files.</p>
+<p><a class="glightbox" href="../Images/Day39_Git9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git9.png" /></a></p>
+<p>Then we can cycle through our changed files before we commit.</p>
+<p><a class="glightbox" href="../Images/Day39_Git10.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git10.png" /></a></p>
+<p>I am using VScode as my IDE and like most IDEs they have this functionality built in it is very rare you would need to run these commands from the terminal, although helpful if you don't have an IDE installed for some reason.</p>
+<h3 id="viewing-the-history">Viewing the History<a class="headerlink" href="#viewing-the-history" title="Permanent link">&para;</a></h3>
+<p>We previously touched on <code>git log</code> which will provide us with a comprehensive view of all commits we have made in our repository.</p>
+<p><a class="glightbox" href="../Images/Day39_Git11.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git11.png" /></a></p>
+<p>Each commit has its hexadecimal string, unique to the repository. Here you can see which branch we are working on and then also the author, date and commit message.</p>
+<p>We also have <code>git log --oneline</code> and this gives us a much smaller version of the hexadecimal string which we can use in other <code>diff</code> commands. We also only have the one-line description or commit message.</p>
+<p><a class="glightbox" href="../Images/Day39_Git12.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git12.png" /></a></p>
+<p>We can reverse this into a start with the first commit by running <code>git log --oneline --reverse</code> and now we see our first commit at the top of our page.</p>
+<p><a class="glightbox" href="../Images/Day39_Git13.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git13.png" /></a></p>
+<h3 id="viewing-a-commit">Viewing a Commit<a class="headerlink" href="#viewing-a-commit" title="Permanent link">&para;</a></h3>
+<p>Being able to look at the commit message is great if you have been conscious about following best practices and you have added a meaningful commit message, however, there is also <code>git show</code> command which allows us to inspect and view a commit.</p>
+<p>We can use <code>git log --oneline --reverse</code> to get a list of our commits. and then we can take those and run <code>git show &lt;commit ID&gt;</code></p>
+<p><a class="glightbox" href="../Images/Day39_Git14.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git14.png" /></a></p>
+<p>The output of that command will look like below with the detail of the commit, author and what changed.</p>
+<p><a class="glightbox" href="../Images/Day39_Git15.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git15.png" /></a></p>
+<p>We can also use <code>git show HEAD~1</code> where 1 is how many steps back from the current version we want to get back to.</p>
+<p>This is great if you want some detail on your files, but if we want to list all the files in a tree for the whole snapshot directory. We can achieve this by using the <code>git ls-tree HEAD~1</code> command, again going back one snapshot from the last commit. We can see below we have two blobs, these indicate files whereas the tree would indicate a directory. You can also see commits and tags in this information.</p>
+<p><a class="glightbox" href="../Images/Day39_Git16.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git16.png" /></a></p>
+<p>We can then use the above to drill in and see the contents of our file (blobs) using the <code>git show</code> command.</p>
+<p><a class="glightbox" href="../Images/Day39_Git17.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git17.png" /></a></p>
+<p>Then the contents of that specific version of the file will be shown.</p>
+<p><a class="glightbox" href="../Images/Day39_Git18.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git18.png" /></a></p>
+<h3 id="unstaging-files">Unstaging Files<a class="headerlink" href="#unstaging-files" title="Permanent link">&para;</a></h3>
+<p>There will be a time when you have maybe used <code>git add .</code> but there are files you do not wish to commit to that snapshot just yet. In this example below I have added newfile.txt to my staging area but I am not ready to commit this file so I am going to use the <code>git restore --staged newfile.txt</code> to undo the <code>git add</code> step.</p>
+<p><a class="glightbox" href="../Images/Day39_Git19.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git19.png" /></a></p>
+<p>We can also do the same to modified files such as main.js and unstage the commit, see above we have a green M for modified and then below we are unstaging those changes.</p>
+<p><a class="glightbox" href="../Images/Day39_Git20.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git20.png" /></a></p>
+<p>I have found this command quite useful during the 90DaysOfDevOps as I sometimes work ahead of the days where I feel I want to make notes for the following day but I don't want to commit and push to the public GitHub repository.</p>
+<h3 id="discarding-local-changes">Discarding Local Changes<a class="headerlink" href="#discarding-local-changes" title="Permanent link">&para;</a></h3>
+<p>Sometimes we might make changes but we are not happy with those changes and we want to throw them away. We are going to use the <code>git restore</code> command again and we are going to be able to restore files from our snapshots or previous versions. We can run <code>git restore .</code> against our directory and we will restore everything from our snapshot but notice that our untracked file is still present. There is no previous file being tracked called newfile.txt.</p>
+<p><a class="glightbox" href="../Images/Day39_Git21.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git21.png" /></a></p>
+<p>Now to remove newfile.txt or any untracked files. We can use <code>git clean</code> we will get a warning alone.</p>
+<p><a class="glightbox" href="../Images/Day39_Git22.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git22.png" /></a></p>
+<p>Or if we know the consequences then we might want to run <code>git clean -fd</code> to force and remove all directories.</p>
+<p><a class="glightbox" href="../Images/Day39_Git23.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git23.png" /></a></p>
+<h3 id="restoring-a-file-to-an-earlier-version">Restoring a File to an Earlier Version<a class="headerlink" href="#restoring-a-file-to-an-earlier-version" title="Permanent link">&para;</a></h3>
+<p>As we have alluded to throughout a big portion of what Git can help with is being able to restore copies of your files from your snapshots (this is not a backup but it is a very fast restore point) My advice is that you also save copies of your code in other locations using a backup solution for this.</p>
+<p>As an example let's go and delete our most important file in our directory, notice we are using Unix-based commands to remove this from the directory, not git commands.</p>
+<p><a class="glightbox" href="../Images/Day39_Git24.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git24.png" /></a></p>
+<p>Now we have no readme.md in our working directory. We could have used <code>git rm readme.md</code> and this would then be reflected in our git database. Let's also delete it from here to simulate it being removed completely.</p>
+<p><a class="glightbox" href="../Images/Day39_Git25.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git25.png" /></a></p>
+<p>Let's now commit this with a message and prove that we no longer have anything in our working directory or staging area.</p>
+<p><a class="glightbox" href="../Images/Day39_Git26.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git26.png" /></a></p>
+<p>Mistakes were made and we now need this file back!</p>
+<p>We could use the <code>git undo</code> command which will undo the last commit, but what if it was a while back? We can use our <code>git log</code> command to find our commits and then we find that our file is in the last commit but we don't all of those commits to be undone so we can then use this command <code>git restore --source=HEAD~1 README.md</code> to specifically find the file and restore it from our snapshot.</p>
+<p>You can see using this process we now have the file back in our working directory.</p>
+<p><a class="glightbox" href="../Images/Day39_Git27.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git27.png" /></a></p>
+<p>We now have a new untracked file and we can use our commands previously mentioned to track, stage and commit our files and changes.</p>
+<h3 id="rebase-vs-merge">Rebase vs Merge<a class="headerlink" href="#rebase-vs-merge" title="Permanent link">&para;</a></h3>
+<p>This seems to be the biggest headache when it comes to Git and when to use rebase vs using merge on your git repositories.</p>
+<p>The first thing to know is that both <code>git rebase</code> and <code>git merge</code> solve the same problem. Both are to integrate changes from one branch into another branch. However, they do this in different ways.</p>
+<p>Let's start with a new feature in a new dedicated branch. The Main branch continues with new commits.</p>
+<p><a class="glightbox" href="../Images/Day39_Git28.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git28.png" /></a></p>
+<p>The easy option here is to use <code>git merge feature main</code> which will merge the main branch into the feature branch.</p>
+<p><a class="glightbox" href="../Images/Day39_Git29.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git29.png" /></a></p>
+<p>Merging is easy because it is non-destructive. The existing branches are not changed in any way. However, this also means that the feature branch will have an irrelevant merge commit every time you need to incorporate upstream changes. If the main is very busy or active this will or can pollute the feature branch history.</p>
+<p>As an alternate option, we can rebase the feature branch onto the main branch using</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git checkout feature
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git rebase main
+</span></code></pre></div>
+<p>This moves the feature branch (the entire feature branch) effectively incorporating all of the new commits in the main. But, instead of using a merge commit, rebasing re-writes the project history by creating brand new commits for each commit in the original branch.</p>
+<p><a class="glightbox" href="../Images/Day39_Git30.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day39_Git30.png" /></a></p>
+<p>The biggest benefit of rebasing is a much cleaner project history. It also eliminates unnecessary merge commits. and as you compare the last two images, you can follow arguably a much cleaner linear project history.</p>
+<p>Although it's still not a foregone conclusion, choosing the cleaner history also comes with tradeoffs, If you do not follow the <a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing#the-golden-rule-of-rebasing">The Golden rule of rebasing</a> re-writing project history can be potentially catastrophic for your collaboration workflow. And, less importantly, rebasing loses the context provided by a merge commit—you can’t see when upstream changes were incorporated into the feature.</p>
+<h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Yc8sCSeMhi4">What is Version Control?</a></li>
+<li><a href="https://www.youtube.com/watch?v=kr62e_n6QuQ">Types of Version Control System</a></li>
+<li><a href="https://www.youtube.com/watch?v=8JJ101D3knE&amp;t=52s">Git Tutorial for Beginners</a></li>
+<li><a href="https://www.youtube.com/watch?v=Uszj_k0DGsg">Git for Professionals Tutorial</a></li>
+<li><a href="https://www.youtube.com/watch?v=RGOj5yH7evk&amp;t=8s">Git and GitHub for Beginners - Crash Course</a></li>
+<li><a href="https://www.youtube.com/watch?v=apGV9Kg7ics">Complete Git and GitHub Tutorial</a></li>
+<li><a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet">Git cheatsheet</a></li>
+<li><a href="https://veducate.co.uk/exploring-the-git-command-line/">Exploring the Git command line – A getting started guide</a></li>
+</ul>
+<p>See you on <a href="../day40/">Day40</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../day38/" class="md-footer__link md-footer__link--prev" aria-label="Previous: #90DaysOfDevOps - Staging &amp; Changing - Day 38">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                #90DaysOfDevOps - Staging & Changing - Day 38
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../day40/" class="md-footer__link md-footer__link--next" aria-label="Next: #90DaysOfDevOps - Social Network for code - Day 40">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                #90DaysOfDevOps - Social Network for code - Day 40
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "navigation.instant", "navigation.instant.prefetch", "navigation.tracking", "navigation.sections", "navigation.footer", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "search.highlight", "search.share", "search.suggest", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

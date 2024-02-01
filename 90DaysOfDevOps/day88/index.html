@@ -1,0 +1,3341 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="90DaysOfDevOps - Application Focused Backups">
+      
+      
+        <meta name="author" content="NinTech">
+      
+      
+        <link rel="canonical" href="https://studyspace.nin.id.vn/90DaysOfDevOps/day88/">
+      
+      
+        <link rel="prev" href="../day87/">
+      
+      
+        <link rel="next" href="../day89/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>#90DaysOfDevOps - Application Focused Backup - Day 88 - Study Space SysOpsDev</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-RYW9ZPVJLX"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-RYW9ZPVJLX",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-RYW9ZPVJLX",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#application-focused-backups" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Study Space SysOpsDev" class="md-header__button md-logo" aria-label="Study Space SysOpsDev" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Study Space SysOpsDev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              #90DaysOfDevOps - Application Focused Backup - Day 88
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Study Space SysOpsDev" class="md-nav__button md-logo" aria-label="Study Space SysOpsDev" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Study Space SysOpsDev
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    90DaysOfDevOps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            90DaysOfDevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Introduction - Day 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Responsibilities of a DevOps Engineer - Day 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Application Focused - Day 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - DevOps & Agile - Day 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Plan > Code > Build > Testing > Release > Deploy > Operate > Monitor > - Day 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - DevOps - The real stories - Day 6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Learning a Programming Language - Day 7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Setting up your DevOps environment for Go & Hello World - Day 8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Let's explain the Hello World code - Day 9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Go Workspace - Day 10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Variables & Constants in Go - Day 11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Getting user input with Pointers and a finished program - Day 12
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Tweet your progress with our new App - Day 13
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: DevOps and Linux - Day 14
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Linux Commands for DevOps (Actually everyone) - Day 15
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Managing your Linux System, Filesystem & Storage - Day 16
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day17/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Text Editors - nano vs vim - Day 17
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day18/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - SSH & Web Server - Day 18
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day19/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Automate tasks with bash scripts - Day 19
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day20/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Dev workstation setup - All the pretty things - Day 20
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day21/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: DevOps and Networking - Day 21
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day22/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The OSI Model - The 7 Layers - Day 22
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day23/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Network Protocols - Day 23
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day24/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Network Automation - Day 24
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day25/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Python for Network Automation - Day 25
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day26/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Building our Lab - Day 26
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day27/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Getting Hands-On with Python & Network - Day 27
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day28/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: DevOps & The Cloud - Day 28
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Fundamentals - Day 29
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day30/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Security Models - Day 30
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day31/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Compute Models - Day 31
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day32/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Storage Models - Day 32
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day33/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Networking Models + Azure Management - Day 33
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day34/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Microsoft Azure Hands-On Scenarios - Day 34
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day35/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Git - Version Control - Day 35
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day36/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Installing & Configuring Git - Day 36
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day37/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Gitting to know Git - Day 37
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day38/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Staging & Changing - Day 38
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day39/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Viewing, unstaging, discarding & restoring - Day 39
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day40/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Social Network for code - Day 40
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day41/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Open Source Workflow - Day 41
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day42/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Containers - Day 42
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day43/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - What is Docker & Getting installed - Day 43
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day44/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Docker Images & Hands-On with Docker Desktop - Day 44
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day45/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The anatomy of a Docker Image - Day 45
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day46/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Docker Compose - Day 46
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day47/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Docker Networking & Security - Day 47
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day48/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Alternatives to Docker - Day 48
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day49/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Kubernetes - Day 49
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day50/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Choosing your Kubernetes platform - Day 50
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day51/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Deploying your first Kubernetes Cluster - Day 51
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day52/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Setting up a multinode Kubernetes Cluster - Day 52
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day53/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Rancher Overview - Hands On - Day 53
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day54/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Kubernetes Application Deployment - Day 54
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day55/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - State and Ingress in Kubernetes - Day 55
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day56/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: IaC - Day 56
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day57/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - An intro to Terraform - Day 57
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day58/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - HashiCorp Configuration Language (HCL) - Day 58
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day59/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Create a VM with Terraform & Variables - Day 59
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day60/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Docker Containers, Provisioners & Modules - Day 60
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day61/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Kubernetes & Multiple Environments - Day 61
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day62/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Testing, Tools & Alternatives - Day 62
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day63/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Configuration Management - Day 63
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day64/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Ansible: Getting Started - Day 64
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day65/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Ansible Playbooks - Day 65
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day66/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Ansible Playbooks Continued... - Day 66
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day67/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Using Roles & Deploying a Loadbalancer - Day 67
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day68/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Tags, Variables, Inventory & Database Server config - Day 68
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day69/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - All other things Ansible - Automation Controller (Tower), AWX, Vault - Day 69
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day70/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: CI/CD Pipelines - Day 70
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day71/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - What is Jenkins? - Day 71
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day72/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Getting hands-on with Jenkins - Day 72
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day73/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Building a Jenkins Pipeline - Day 73
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day74/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Hello World - Jenkinsfile App Pipeline - Day 74
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day75/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - GitHub Actions Overview - Day 75
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day76/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - ArgoCD Overview - Day 76
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day77/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Monitoring - Day 77
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day78/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Hands-On Monitoring Tools - Day 78
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day79/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Log Management - Day 79
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - ELK Stack - Day 80
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Fluentd & FluentBit - Day 81
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - EFK Stack - Day 82
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Data Visualisation - Grafana - Day 83
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - The Big Picture: Data Management - Day 84
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Data Services - Day 85
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Backup all the platforms - Day 86
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day87/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Hands-On Backup & Recovery - Day 87
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Application Focused Backup - Day 88
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Application Focused Backup - Day 88
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#application-focused-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application-Focused Backups
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Application-Focused Backups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introducing-kanister" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducing Kanister
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execution-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execution Walkthrough
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploying-kanister" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploying Kanister
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy a Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-mysql-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a MySQL CLIENT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-data-to-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add Data to MySQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-kanister-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Kanister Profile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blueprint-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Blueprint time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-our-actionset-and-protect-our-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create our ActionSet and Protect our application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Disaster Recovery - Day 89
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    #90DaysOfDevOps - Data & Application Mobility - Day 90
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../CICD/Jenkins/steps/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    CICD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    <a href="../Configmgmt/ansible-scenario3/roles/apache2/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Configmgmt
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../Containers/elasticsearch-logstash-kibana/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    
+  
+  
+    <a href="../Monitoring/Elastic%20Stack/extensions/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Monitoring
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ServerAdministration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            ServerAdministration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    <a href="../../ServerAdministration/DatabaseServer/NoSQL/Redis/Benmark-Redis/redis-benchmark.md/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    DatabaseServer
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#application-focused-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application-Focused Backups
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Application-Focused Backups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introducing-kanister" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducing Kanister
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execution-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execution Walkthrough
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploying-kanister" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploying Kanister
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy a Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-mysql-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a MySQL CLIENT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-data-to-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add Data to MySQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-kanister-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Kanister Profile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blueprint-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Blueprint time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-our-actionset-and-protect-our-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create our ActionSet and Protect our application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>#90DaysOfDevOps - Application Focused Backup - Day 88</h1>
+
+<h2 id="application-focused-backups">Application-Focused Backups<a class="headerlink" href="#application-focused-backups" title="Permanent link">&para;</a></h2>
+<p>We have already spent some time talking about data services or data-intensive applications such as databases on <a href="../day85/">Day 85</a>. For these data services, we have to consider how we manage consistency, especially when it comes to application consistency.</p>
+<p>In this post, we are going to dive into that requirement around consistently protecting the application data.</p>
+<p>To do this our tool of choice will be <a href="https://kanister.io/">Kanister</a></p>
+<p><a class="glightbox" href="../Images/Day88_Data1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data1.png" /></a></p>
+<h3 id="introducing-kanister">Introducing Kanister<a class="headerlink" href="#introducing-kanister" title="Permanent link">&para;</a></h3>
+<p>Kanister is an open-source project by Kasten, that enables us to manage (backup and restore) application data on Kubernetes. You can deploy Kanister as a helm application into your Kubernetes cluster.</p>
+<p>Kanister uses Kubernetes custom resources, the main custom resources that are installed when Kanister is deployed are</p>
+<ul>
+<li><code>Profile</code> - is a target location to store your backups and recover from. Most commonly this will be object storage.</li>
+<li><code>Blueprint</code> - steps that are to be taken to backup and restore the database should be maintained in the Blueprint</li>
+<li><code>ActionSet</code> - is the motion to move our target backup to our profile as well as restore actions.</li>
+</ul>
+<h3 id="execution-walkthrough">Execution Walkthrough<a class="headerlink" href="#execution-walkthrough" title="Permanent link">&para;</a></h3>
+<p>Before we get hands-on we should take a look at the workflow that Kanister takes in protecting application data. Firstly our controller is deployed using helm into our Kubernetes cluster, Kanister lives within its namespace. We take our Blueprint of which there are many community-supported blueprints available, we will cover this in more detail shortly. We then have our database workload.</p>
+<p><a class="glightbox" href="../Images/Day88_Data2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data2.png" /></a></p>
+<p>We then create our ActionSet.</p>
+<p><a class="glightbox" href="../Images/Day88_Data3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data3.png" /></a></p>
+<p>The ActionSet allows us to run the actions defined in the blueprint against the specific data service.</p>
+<p><a class="glightbox" href="../Images/Day88_Data4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data4.png" /></a></p>
+<p>The ActionSet in turn uses the Kanister functions (KubeExec, KubeTask, Resource Lifecycle) and pushes our backup to our target repository (Profile).</p>
+<p><a class="glightbox" href="../Images/Day88_Data5.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data5.png" /></a></p>
+<p>If that action is completed/failed the respective status is updated in the Actionset.</p>
+<p><a class="glightbox" href="../Images/Day88_Data6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data6.png" /></a></p>
+<h3 id="deploying-kanister">Deploying Kanister<a class="headerlink" href="#deploying-kanister" title="Permanent link">&para;</a></h3>
+<p>Once again we will be using the minikube cluster to achieve this application backup. If you have it still running from the previous session then we can continue to use this.</p>
+<p>At the time of writing, we are up to image version <code>0.75.0</code> with the following helm command we will install kanister into our Kubernetes cluster.</p>
+<p><code>helm install kanister --namespace kanister kanister/kanister-operator --set image.tag=0.75.0 --create-namespace</code></p>
+<p><a class="glightbox" href="../Images/Day88_Data7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data7.png" /></a></p>
+<p>We can use <code>kubectl get pods -n kanister</code> to ensure the pod is up and running and then we can also check our custom resource definitions are now available (If you have only installed Kanister then you will see the highlighted 3)</p>
+<p><a class="glightbox" href="../Images/Day88_Data8.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data8.png" /></a></p>
+<h3 id="deploy-a-database">Deploy a Database<a class="headerlink" href="#deploy-a-database" title="Permanent link">&para;</a></h3>
+<p>Deploying MySQL via helm:</p>
+<div class="language-Shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">APP_NAME</span><span class="o">=</span>my-production-app
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>kubectl<span class="w"> </span>create<span class="w"> </span>ns<span class="w"> </span><span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>bitnami<span class="w"> </span>https://charts.bitnami.com/bitnami
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>helm<span class="w"> </span>install<span class="w"> </span>mysql-store<span class="w"> </span>bitnami/mysql<span class="w"> </span>--set<span class="w"> </span>primary.persistence.size<span class="o">=</span>1Gi,volumePermissions.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--namespace<span class="o">=</span><span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span><span class="w"> </span>-w
+</span></code></pre></div>
+<p><a class="glightbox" href="../Images/Day88_Data9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data9.png" /></a></p>
+<p>Populate the MySQL database with initial data, and run the following:</p>
+<div class="language-Shell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span><span class="w"> </span>mysql-store<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.data.mysql-root-password}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>--decode<span class="k">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">MYSQL_HOST</span><span class="o">=</span>mysql-store.<span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span>.svc.cluster.local
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">MYSQL_EXEC</span><span class="o">=</span><span class="s2">&quot;mysql -h </span><span class="si">${</span><span class="nv">MYSQL_HOST</span><span class="si">}</span><span class="s2"> -u root --password=</span><span class="si">${</span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="si">}</span><span class="s2"> -DmyImportantData -t&quot;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="si">${</span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="si">}</span>
+</span></code></pre></div>
+<h3 id="create-a-mysql-client">Create a MySQL CLIENT<a class="headerlink" href="#create-a-mysql-client" title="Permanent link">&para;</a></h3>
+<p>We will run another container image to act as our client</p>
+<div class="language-Shell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">APP_NAME</span><span class="o">=</span>my-production-app
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>kubectl<span class="w"> </span>run<span class="w"> </span>mysql-client<span class="w"> </span>--rm<span class="w"> </span>--env<span class="w"> </span><span class="nv">APP_NS</span><span class="o">=</span><span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span><span class="w"> </span>--env<span class="w"> </span><span class="nv">MYSQL_EXEC</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYSQL_EXEC</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--env<span class="w"> </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="si">${</span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="si">}</span><span class="w"> </span>--env<span class="w"> </span><span class="nv">MYSQL_HOST</span><span class="o">=</span><span class="si">${</span><span class="nv">MYSQL_HOST</span><span class="si">}</span><span class="w"> </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span><span class="w"> </span>--tty<span class="w"> </span>-i<span class="w"> </span>--restart<span class="o">=</span><span class="s1">&#39;Never&#39;</span><span class="w"> </span>--image<span class="w">  </span>docker.io/bitnami/mysql:latest<span class="w"> </span>--command<span class="w"> </span>--<span class="w"> </span>bash
+</span></code></pre></div>
+<div class="language-Shell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Note:<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>already<span class="w"> </span>have<span class="w"> </span>an<span class="w"> </span>existing<span class="w"> </span>MySQL<span class="w"> </span>client<span class="w"> </span>pod<span class="w"> </span>running,<span class="w"> </span>delete<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span><span class="w"> </span>mysql-client
+</span></code></pre></div>
+<h3 id="add-data-to-mysql">Add Data to MySQL<a class="headerlink" href="#add-data-to-mysql" title="Permanent link">&para;</a></h3>
+<div class="language-Shell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;create database myImportantData;&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>mysql<span class="w"> </span>-h<span class="w"> </span><span class="si">${</span><span class="nv">MYSQL_HOST</span><span class="si">}</span><span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>--password<span class="o">=</span><span class="si">${</span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="si">}</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">MYSQL_EXEC</span><span class="o">=</span><span class="s2">&quot;mysql -h </span><span class="si">${</span><span class="nv">MYSQL_HOST</span><span class="si">}</span><span class="s2"> -u root --password=</span><span class="si">${</span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="si">}</span><span class="s2"> -DmyImportantData -t&quot;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;drop table Accounts&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="si">${</span><span class="nv">MYSQL_EXEC</span><span class="si">}</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;create table if not exists Accounts(name text, balance integer); insert into Accounts values(&#39;nick&#39;, 0);&quot;</span><span class="w"> </span><span class="p">|</span><span class="w">  </span><span class="si">${</span><span class="nv">MYSQL_EXEC</span><span class="si">}</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;insert into Accounts values(&#39;albert&#39;, 112);&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="si">${</span><span class="nv">MYSQL_EXEC</span><span class="si">}</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;insert into Accounts values(&#39;alfred&#39;, 358);&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="si">${</span><span class="nv">MYSQL_EXEC</span><span class="si">}</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;insert into Accounts values(&#39;beatrice&#39;, 1321);&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="si">${</span><span class="nv">MYSQL_EXEC</span><span class="si">}</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;insert into Accounts values(&#39;bartholomew&#39;, 34);&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="si">${</span><span class="nv">MYSQL_EXEC</span><span class="si">}</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;insert into Accounts values(&#39;edward&#39;, 5589);&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="si">${</span><span class="nv">MYSQL_EXEC</span><span class="si">}</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;insert into Accounts values(&#39;edwin&#39;, 144);&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="si">${</span><span class="nv">MYSQL_EXEC</span><span class="si">}</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;insert into Accounts values(&#39;edwina&#39;, 233);&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="si">${</span><span class="nv">MYSQL_EXEC</span><span class="si">}</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;insert into Accounts values(&#39;rastapopoulos&#39;, 377);&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="si">${</span><span class="nv">MYSQL_EXEC</span><span class="si">}</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;select * from Accounts;&quot;</span><span class="w"> </span><span class="p">|</span><span class="w">  </span><span class="si">${</span><span class="nv">MYSQL_EXEC</span><span class="si">}</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="nb">exit</span>
+</span></code></pre></div>
+<p>You should be able to see some data as per below.</p>
+<p><a class="glightbox" href="../Images/Day88_Data10.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data10.png" /></a></p>
+<h3 id="create-kanister-profile">Create Kanister Profile<a class="headerlink" href="#create-kanister-profile" title="Permanent link">&para;</a></h3>
+<p>Kanister provides a CLI, <code>kanctl</code> and another utility <code>kando</code> that is used to interact with your object storage provider from the blueprint and both of these utilities.</p>
+<p><a href="https://docs.kanister.io/tooling.html#tooling">CLI Download</a></p>
+<p>I have gone and I have created an AWS S3 Bucket that we will use as our profile target and restore location. I am going to be using environment variables so that I can still show you the commands I am running with <code>kanctl</code> to create our kanister profile.</p>
+<p><code>kanctl create profile s3compliant --access-key $ACCESS_KEY --secret-key $SECRET_KEY --bucket $BUCKET --region eu-west-2 --namespace my-production-app</code></p>
+<p><a class="glightbox" href="../Images/Day88_Data11.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data11.png" /></a></p>
+<h3 id="blueprint-time">Blueprint time<a class="headerlink" href="#blueprint-time" title="Permanent link">&para;</a></h3>
+<p>Don't worry you don't need to create your one from scratch unless your data service is not listed here in the <a href="https://github.com/kanisterio/kanister/tree/master/examples">Kanister Examples</a> but by all means, community contributions are how this project gains awareness.</p>
+<p>The blueprint we will be using will be the below.</p>
+<div class="language-Shell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>apiVersion:<span class="w"> </span>cr.kanister.io/v1alpha1
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>kind:<span class="w"> </span>Blueprint
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>metadata:
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>name:<span class="w"> </span>mysql-blueprint
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>actions:
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span>backup:
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span>outputArtifacts:
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">      </span>mysqlCloudDump:
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span>keyValue:
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">          </span>s3path:<span class="w"> </span><span class="s2">&quot;{{ .Phases.dumpToObjectStore.Output.s3path }}&quot;</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span>phases:
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span>-<span class="w"> </span>func:<span class="w"> </span>KubeTask
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">      </span>name:<span class="w"> </span>dumpToObjectStore
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">      </span>objects:
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span>mysqlSecret:
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">          </span>kind:<span class="w"> </span>Secret
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">          </span>name:<span class="w"> </span><span class="s1">&#39;{{ index .Object.metadata.labels &quot;app.kubernetes.io/instance&quot; }}&#39;</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">          </span>namespace:<span class="w"> </span><span class="s1">&#39;{{ .StatefulSet.Namespace }}&#39;</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">      </span>args:
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">        </span>image:<span class="w"> </span>ghcr.io/kanisterio/mysql-sidecar:0.75.0
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span>namespace:<span class="w"> </span><span class="s2">&quot;{{ .StatefulSet.Namespace }}&quot;</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span>command:
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">        </span>-<span class="w"> </span>bash
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">        </span>-<span class="w"> </span>-o
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">        </span>-<span class="w"> </span>errexit
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">        </span>-<span class="w"> </span>-o
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">        </span>-<span class="w"> </span>pipefail
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">        </span>-<span class="w"> </span>-c
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">        </span>-<span class="w"> </span><span class="p">|</span>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">          </span><span class="nv">s3_path</span><span class="o">=</span><span class="s2">&quot;/mysql-backups/{{ .StatefulSet.Namespace }}/{{ index .Object.metadata.labels &quot;</span>app.kubernetes.io/instance<span class="s2">&quot; }}/{{ toDate &quot;</span><span class="m">2006</span>-01-02T15:04:05.999999999Z07:00<span class="s2">&quot; .Time  | date &quot;</span><span class="m">2006</span>-01-02T15-04-05<span class="s2">&quot; }}/dump.sql.gz&quot;</span>
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">          </span><span class="nv">root_password</span><span class="o">=</span><span class="s2">&quot;{{ index .Phases.dumpToObjectStore.Secrets.mysqlSecret.Data &quot;</span>mysql-root-password<span class="s2">&quot; | toString }}&quot;</span>
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">          </span>mysqldump<span class="w"> </span>--column-statistics<span class="o">=</span><span class="m">0</span><span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>--password<span class="o">=</span><span class="si">${</span><span class="nv">root_password</span><span class="si">}</span><span class="w"> </span>-h<span class="w"> </span><span class="o">{{</span><span class="w"> </span>index<span class="w"> </span>.Object.metadata.labels<span class="w"> </span><span class="s2">&quot;app.kubernetes.io/instance&quot;</span><span class="w"> </span><span class="o">}}</span><span class="w"> </span>--single-transaction<span class="w"> </span>--all-databases<span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>-<span class="w"> </span><span class="p">|</span><span class="w"> </span>kando<span class="w"> </span>location<span class="w"> </span>push<span class="w"> </span>--profile<span class="w"> </span><span class="s1">&#39;{{ toJson .Profile }}&#39;</span><span class="w"> </span>--path<span class="w"> </span><span class="si">${</span><span class="nv">s3_path</span><span class="si">}</span><span class="w"> </span>-
+</span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">          </span>kando<span class="w"> </span>output<span class="w"> </span>s3path<span class="w"> </span><span class="si">${</span><span class="nv">s3_path</span><span class="si">}</span>
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">  </span>restore:
+</span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">    </span>inputArtifactNames:
+</span><span id="__span-5-36"><a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">    </span>-<span class="w"> </span>mysqlCloudDump
+</span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="w">    </span>phases:
+</span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="w">    </span>-<span class="w"> </span>func:<span class="w"> </span>KubeTask
+</span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="w">      </span>name:<span class="w"> </span>restoreFromBlobStore
+</span><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">      </span>objects:
+</span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="w">        </span>mysqlSecret:
+</span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a><span class="w">          </span>kind:<span class="w"> </span>Secret
+</span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a><span class="w">          </span>name:<span class="w"> </span><span class="s1">&#39;{{ index .Object.metadata.labels &quot;app.kubernetes.io/instance&quot; }}&#39;</span>
+</span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a><span class="w">          </span>namespace:<span class="w"> </span><span class="s1">&#39;{{ .StatefulSet.Namespace }}&#39;</span>
+</span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a><span class="w">      </span>args:
+</span><span id="__span-5-46"><a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a><span class="w">        </span>image:<span class="w"> </span>ghcr.io/kanisterio/mysql-sidecar:0.75.0
+</span><span id="__span-5-47"><a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a><span class="w">        </span>namespace:<span class="w"> </span><span class="s2">&quot;{{ .StatefulSet.Namespace }}&quot;</span>
+</span><span id="__span-5-48"><a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a><span class="w">        </span>command:
+</span><span id="__span-5-49"><a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a><span class="w">        </span>-<span class="w"> </span>bash
+</span><span id="__span-5-50"><a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a><span class="w">        </span>-<span class="w"> </span>-o
+</span><span id="__span-5-51"><a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a><span class="w">        </span>-<span class="w"> </span>errexit
+</span><span id="__span-5-52"><a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a><span class="w">        </span>-<span class="w"> </span>-o
+</span><span id="__span-5-53"><a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a><span class="w">        </span>-<span class="w"> </span>pipefail
+</span><span id="__span-5-54"><a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a><span class="w">        </span>-<span class="w"> </span>-c
+</span><span id="__span-5-55"><a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a><span class="w">        </span>-<span class="w"> </span><span class="p">|</span>
+</span><span id="__span-5-56"><a id="__codelineno-5-56" name="__codelineno-5-56" href="#__codelineno-5-56"></a><span class="w">          </span><span class="nv">s3_path</span><span class="o">=</span><span class="s2">&quot;{{ .ArtifactsIn.mysqlCloudDump.KeyValue.s3path }}&quot;</span>
+</span><span id="__span-5-57"><a id="__codelineno-5-57" name="__codelineno-5-57" href="#__codelineno-5-57"></a><span class="w">          </span><span class="nv">root_password</span><span class="o">=</span><span class="s2">&quot;{{ index .Phases.restoreFromBlobStore.Secrets.mysqlSecret.Data &quot;</span>mysql-root-password<span class="s2">&quot; | toString }}&quot;</span>
+</span><span id="__span-5-58"><a id="__codelineno-5-58" name="__codelineno-5-58" href="#__codelineno-5-58"></a><span class="w">          </span>kando<span class="w"> </span>location<span class="w"> </span>pull<span class="w"> </span>--profile<span class="w"> </span><span class="s1">&#39;{{ toJson .Profile }}&#39;</span><span class="w"> </span>--path<span class="w"> </span><span class="si">${</span><span class="nv">s3_path</span><span class="si">}</span><span class="w"> </span>-<span class="w"> </span><span class="p">|</span><span class="w"> </span>gunzip<span class="w"> </span><span class="p">|</span><span class="w"> </span>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>--password<span class="o">=</span><span class="si">${</span><span class="nv">root_password</span><span class="si">}</span><span class="w"> </span>-h<span class="w"> </span><span class="o">{{</span><span class="w"> </span>index<span class="w"> </span>.Object.metadata.labels<span class="w"> </span><span class="s2">&quot;app.kubernetes.io/instance&quot;</span><span class="w"> </span><span class="o">}}</span>
+</span><span id="__span-5-59"><a id="__codelineno-5-59" name="__codelineno-5-59" href="#__codelineno-5-59"></a><span class="w">  </span>delete:
+</span><span id="__span-5-60"><a id="__codelineno-5-60" name="__codelineno-5-60" href="#__codelineno-5-60"></a><span class="w">    </span>inputArtifactNames:
+</span><span id="__span-5-61"><a id="__codelineno-5-61" name="__codelineno-5-61" href="#__codelineno-5-61"></a><span class="w">    </span>-<span class="w"> </span>mysqlCloudDump
+</span><span id="__span-5-62"><a id="__codelineno-5-62" name="__codelineno-5-62" href="#__codelineno-5-62"></a><span class="w">    </span>phases:
+</span><span id="__span-5-63"><a id="__codelineno-5-63" name="__codelineno-5-63" href="#__codelineno-5-63"></a><span class="w">    </span>-<span class="w"> </span>func:<span class="w"> </span>KubeTask
+</span><span id="__span-5-64"><a id="__codelineno-5-64" name="__codelineno-5-64" href="#__codelineno-5-64"></a><span class="w">      </span>name:<span class="w"> </span>deleteFromBlobStore
+</span><span id="__span-5-65"><a id="__codelineno-5-65" name="__codelineno-5-65" href="#__codelineno-5-65"></a><span class="w">      </span>args:
+</span><span id="__span-5-66"><a id="__codelineno-5-66" name="__codelineno-5-66" href="#__codelineno-5-66"></a><span class="w">        </span>image:<span class="w"> </span>ghcr.io/kanisterio/mysql-sidecar:0.75.0
+</span><span id="__span-5-67"><a id="__codelineno-5-67" name="__codelineno-5-67" href="#__codelineno-5-67"></a><span class="w">        </span>namespace:<span class="w"> </span><span class="s2">&quot;{{ .Namespace.Name }}&quot;</span>
+</span><span id="__span-5-68"><a id="__codelineno-5-68" name="__codelineno-5-68" href="#__codelineno-5-68"></a><span class="w">        </span>command:
+</span><span id="__span-5-69"><a id="__codelineno-5-69" name="__codelineno-5-69" href="#__codelineno-5-69"></a><span class="w">        </span>-<span class="w"> </span>bash
+</span><span id="__span-5-70"><a id="__codelineno-5-70" name="__codelineno-5-70" href="#__codelineno-5-70"></a><span class="w">        </span>-<span class="w"> </span>-o
+</span><span id="__span-5-71"><a id="__codelineno-5-71" name="__codelineno-5-71" href="#__codelineno-5-71"></a><span class="w">        </span>-<span class="w"> </span>errexit
+</span><span id="__span-5-72"><a id="__codelineno-5-72" name="__codelineno-5-72" href="#__codelineno-5-72"></a><span class="w">        </span>-<span class="w"> </span>-o
+</span><span id="__span-5-73"><a id="__codelineno-5-73" name="__codelineno-5-73" href="#__codelineno-5-73"></a><span class="w">        </span>-<span class="w"> </span>pipefail
+</span><span id="__span-5-74"><a id="__codelineno-5-74" name="__codelineno-5-74" href="#__codelineno-5-74"></a><span class="w">        </span>-<span class="w"> </span>-c
+</span><span id="__span-5-75"><a id="__codelineno-5-75" name="__codelineno-5-75" href="#__codelineno-5-75"></a><span class="w">        </span>-<span class="w"> </span><span class="p">|</span>
+</span><span id="__span-5-76"><a id="__codelineno-5-76" name="__codelineno-5-76" href="#__codelineno-5-76"></a><span class="w">          </span><span class="nv">s3_path</span><span class="o">=</span><span class="s2">&quot;{{ .ArtifactsIn.mysqlCloudDump.KeyValue.s3path }}&quot;</span>
+</span><span id="__span-5-77"><a id="__codelineno-5-77" name="__codelineno-5-77" href="#__codelineno-5-77"></a><span class="w">          </span>kando<span class="w"> </span>location<span class="w"> </span>delete<span class="w"> </span>--profile<span class="w"> </span><span class="s1">&#39;{{ toJson .Profile }}&#39;</span><span class="w"> </span>--path<span class="w"> </span><span class="si">${</span><span class="nv">s3_path</span><span class="si">}</span>
+</span></code></pre></div>
+<p>To add this we will use the <code>kubectl create -f mysql-blueprint.yml -n kanister</code> command</p>
+<p><a class="glightbox" href="../Images/Day88_Data12.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data12.png" /></a></p>
+<h3 id="create-our-actionset-and-protect-our-application">Create our ActionSet and Protect our application<a class="headerlink" href="#create-our-actionset-and-protect-our-application" title="Permanent link">&para;</a></h3>
+<p>We will now take a backup of the MySQL data using an ActionSet defining backup for this application. Create an ActionSet in the same namespace as the controller.</p>
+<p><code>kubectl get profiles.cr.kanister.io -n my-production-app</code> This command will show us the profile we previously created, we can have multiple profiles configured here so we might want to use specific ones for different ActionSets</p>
+<p>We are then going to create our ActionSet with the following command using <code>kanctl</code></p>
+<p><code>kanctl create actionset --action backup --namespace kanister --blueprint mysql-blueprint --statefulset my-production-app/mysql-store --profile my-production-app/s3-profile-dc5zm --secrets mysql=my-production-app/mysql-store</code></p>
+<p>You can see from the command above we are defining the blueprint we added to the namespace, the statefulset in our <code>my-production-app</code> namespace and also the secrets to get into the MySQL application.</p>
+<p><a class="glightbox" href="../Images/Day88_Data13.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data13.png" /></a></p>
+<p>Check the status of the ActionSet by taking the ActionSet name and using this command <code>kubectl --namespace kanister describe actionset backup-qpnqv</code></p>
+<p>Finally, we can go and confirm that we now have data in our AWS S3 bucket.</p>
+<p><a class="glightbox" href="../Images/Day88_Data14.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data14.png" /></a></p>
+<h3 id="restore">Restore<a class="headerlink" href="#restore" title="Permanent link">&para;</a></h3>
+<p>We need to cause some damage before we can restore anything, we can do this by dropping our table, maybe it was an accident, maybe it wasn't.</p>
+<p>Connect to our MySQL pod.</p>
+<div class="language-Shell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">APP_NAME</span><span class="o">=</span>my-production-app
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>kubectl<span class="w"> </span>run<span class="w"> </span>mysql-client<span class="w"> </span>--rm<span class="w"> </span>--env<span class="w"> </span><span class="nv">APP_NS</span><span class="o">=</span><span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span><span class="w"> </span>--env<span class="w"> </span><span class="nv">MYSQL_EXEC</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYSQL_EXEC</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--env<span class="w"> </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="si">${</span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="si">}</span><span class="w"> </span>--env<span class="w"> </span><span class="nv">MYSQL_HOST</span><span class="o">=</span><span class="si">${</span><span class="nv">MYSQL_HOST</span><span class="si">}</span><span class="w"> </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span><span class="w"> </span>--tty<span class="w"> </span>-i<span class="w"> </span>--restart<span class="o">=</span><span class="s1">&#39;Never&#39;</span><span class="w"> </span>--image<span class="w">  </span>docker.io/bitnami/mysql:latest<span class="w"> </span>--command<span class="w"> </span>--<span class="w"> </span>bash
+</span></code></pre></div>
+<p>You can see that our importantdata DB is there with <code>echo "SHOW DATABASES;" | ${MYSQL_EXEC}</code></p>
+<p>Then to drop we ran <code>echo "DROP DATABASE myImportantData;" | ${MYSQL_EXEC}</code></p>
+<p>And confirmed that this was gone with a few attempts to show our database.</p>
+<p><a class="glightbox" href="../Images/Day88_Data15.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data15.png" /></a></p>
+<p>We can now use Kanister to get our important data back in business using the <code>kubectl get actionset -n kanister</code> to find out the ActionSet name that we took earlier. Then we will create a restore ActionSet to restore our data using <code>kanctl create actionset -n kanister --action restore --from "backup-qpnqv"</code></p>
+<p><a class="glightbox" href="../Images/Day88_Data16.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data16.png" /></a></p>
+<p>We can confirm our data is back by using the below command to connect to our database.</p>
+<div class="language-Shell highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">APP_NAME</span><span class="o">=</span>my-production-app
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>kubectl<span class="w"> </span>run<span class="w"> </span>mysql-client<span class="w"> </span>--rm<span class="w"> </span>--env<span class="w"> </span><span class="nv">APP_NS</span><span class="o">=</span><span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span><span class="w"> </span>--env<span class="w"> </span><span class="nv">MYSQL_EXEC</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYSQL_EXEC</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--env<span class="w"> </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="si">${</span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="si">}</span><span class="w"> </span>--env<span class="w"> </span><span class="nv">MYSQL_HOST</span><span class="o">=</span><span class="si">${</span><span class="nv">MYSQL_HOST</span><span class="si">}</span><span class="w"> </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span><span class="w"> </span>--tty<span class="w"> </span>-i<span class="w"> </span>--restart<span class="o">=</span><span class="s1">&#39;Never&#39;</span><span class="w"> </span>--image<span class="w">  </span>docker.io/bitnami/mysql:latest<span class="w"> </span>--command<span class="w"> </span>--<span class="w"> </span>bash
+</span></code></pre></div>
+<p>Now we are inside the MySQL Client, we can issue the <code>echo "SHOW DATABASES;" | ${MYSQL_EXEC}</code> and we can see the database is back. We can also issue the <code>echo "select * from Accounts;" | ${MYSQL_EXEC}</code> to check the contents of the database and our important data is restored.</p>
+<p><a class="glightbox" href="../Images/Day88_Data17.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../Images/Day88_Data17.png" /></a></p>
+<p>In the next post, we take a look at Disaster Recovery within Kubernetes.</p>
+<h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=wFD42Zpbfts">Kanister Overview - An extensible open-source framework for app-lvl data management on Kubernetes</a></li>
+<li><a href="https://community.cncf.io/events/details/cncf-cncf-online-programs-presents-cncf-live-webinar-kanister-application-level-data-operations-on-kubernetes/">Application Level Data Operations on Kubernetes</a></li>
+<li><a href="https://www.youtube.com/watch?v=01qcYSck1c4&amp;t=217s">Kubernetes Backup and Restore made easy!</a></li>
+<li><a href="https://www.youtube.com/watch?v=zybLTQER0yY">Kubernetes Backups, Upgrades, Migrations - with Velero</a></li>
+<li><a href="https://www.youtube.com/watch?v=W2Z7fbCLSTw&amp;t=520s">7 Database Paradigms</a></li>
+<li><a href="https://www.youtube.com/watch?v=07EHsPuKXc0">Disaster Recovery vs. Backup: What's the difference?</a></li>
+<li><a href="https://www.youtube.com/watch?v=hDBlTdzE6Us&amp;t=3s">Veeam Portability &amp; Cloud Mobility</a></li>
+</ul>
+<p>See you on <a href="../day89/">Day 89</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../day87/" class="md-footer__link md-footer__link--prev" aria-label="Previous: #90DaysOfDevOps - Hands-On Backup &amp; Recovery - Day 87">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                #90DaysOfDevOps - Hands-On Backup & Recovery - Day 87
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../day89/" class="md-footer__link md-footer__link--next" aria-label="Next: #90DaysOfDevOps - Disaster Recovery - Day 89">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                #90DaysOfDevOps - Disaster Recovery - Day 89
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "navigation.instant", "navigation.instant.prefetch", "navigation.tracking", "navigation.sections", "navigation.footer", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "search.highlight", "search.share", "search.suggest", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
