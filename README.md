@@ -1,2 +1,2 @@
 # studysysopsdev
-Nơi lưu trữ học tập về System, Devops, Develop.
+Nơi lưu trữ học tập về System, Operation, Develop.
