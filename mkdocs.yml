@@ -131,10 +131,10 @@ validation:
   absolute_links: ignore
   unrecognized_links: ignore
 
-nav:
-  - Server Administration:
-    - Database Server:
-      - NoSQL:
-        - Redis:
-          - Bạn và tôi hiểu gì về Redis?: ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/README.md
+# nav:
+#   - Server Administration:
+#     - Database Server:
+#       - NoSQL:
+#         - Redis:
+#           - Bạn và tôi hiểu gì về Redis?: ServerAdministration/DatabaseServer/NoSQL/Redis/ban-va-toi-hieu-gi-ve-redis/README.md
 
